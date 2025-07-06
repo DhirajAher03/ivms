@@ -1,0 +1,85 @@
+.register-wrapper {
+  background-color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px;
+}
+
+.owl-column {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.owl-image {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  margin-left: 231px;
+}
+
+.form-column {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-form {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 420px;
+}
+
+.logo-text {
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.register-title {
+  font-weight: 500;
+  font-size: 18px;
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.send-code-btn {
+  background-color: #7f8ff4;
+  border: none;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+.send-code-btn:hover {
+  background-color: #6c7fe0;
+}
+
+.signup-btn {
+  background-image: linear-gradient(to right, #7f8ff4, #d26dd4);
+  border: none;
+  color: white;
+  font-weight: 500;
+  padding: 10px;
+}
+
+.signup-btn:hover {
+  opacity: 0.9;
+}

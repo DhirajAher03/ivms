@@ -1,0 +1,722 @@
+.content-container {
+    margin-left: 250px; /* Matches sidebar width */
+  }
+  .rounded-table {
+  border-radius: 15px !important;
+}
+.table_header th {
+            background-color: #111960 !important;
+            color: white !important;
+            font-weight: 600;
+            font-size: 1rem;
+          }
+          canvas {
+           max-height:321px ;
+           max-width: 100% !important;
+         }
+         
+         .pie-chart canvas {
+           max-width: 200px !important;
+           margin: 0 auto;
+         }
+
+  @media (max-width: 767px) {
+    .sidebar {
+      position: relative;
+      transition: width 0.3s;
+    }
+    .content-container {
+      margin-left: 0;
+    }
+  }
+  
+
+  /* College CSS */
+  /* home page */
+@media only screen and (max-width: 768px) {
+  .home-img{
+    width:270px;
+    height: 300px;
+  }  
+  
+  .contactus-img{
+    width: 150px;
+    height: 150px;
+  }
+
+  .marg{
+    margin-top: 150px !important;  
+  }
+
+  .contact-height{
+    height: 22rem !important;
+  }
+  
+}
+
+@media only screen and (min-width:768px) {
+  .contact-height{
+    height: 15rem !important;
+  }
+  
+}
+
+
+
+  @media only screen and (min-width:768px) and (max-width:1023px) {
+    .home-img {
+      width: 350px;
+      height: 350px;
+    }
+
+    .vision-img{
+      width:340px;
+      height: 230px;
+    }
+
+    .contactus-img{
+      width: 250px;
+      height: 200px;
+    }
+  }
+  
+  @media only screen and (min-width:1024px) {
+    .home-img {
+      width: 270px;
+      height: 500px;
+    }
+    .text-md-class{
+      font-size: 20px;
+    }
+
+    .contactus-img{
+      width: 300px;
+      height: 200px;
+    }
+  }
+
+  @media only screen and (min-width:1025px) and (max-width:1200px) {
+    .vision-img{
+      width:450px;
+      height: 290px;
+    }
+  }
+
+  @media only screen and (min-width:1201px) and (max-width:1439px) {
+    .vision-img{
+      width:500px;
+      height: 240px;
+    }
+  }
+  @media only screen  and (min-width:1440px) {
+    .vision-img{
+      width:620px;
+      height: 240px;
+    }
+  }
+
+
+  @media only screen and (max-width:350px) {
+    .vision-img{
+      width:300px;
+      height: 120px;
+      
+    }
+  }
+
+  @media only screen and (min-width:350px) and (max-width:400px) {
+
+    .vision-img{
+      margin-left: 30px;
+      width:300px;
+      height: 120px;
+      
+    }
+  }
+
+  @media only screen and (min-width:400px) and (max-width:500px) {
+    .vision-img{
+      margin-left:40px;
+      width:350px;
+      height: 150px;
+      
+    }
+  }
+
+  @media only screen and (min-width:500px) and (max-width:600px) {
+    .vision-img{
+      margin-left:70px;
+      width:400px;
+      height: 200px;
+      
+    }
+  }
+
+  @media only screen and (min-width:601px) and (max-width:767px) {
+    .vision-img{
+      margin-left:0px;
+      width:540px;
+      height: 200px;
+      
+    }
+  }
+
+
+  /* about us page */
+  @media only screen and (max-width: 550px) {
+    .sliderimage {
+      width:320px;
+      height: 300px;
+    }
+  
+    .sliderimage1{
+      width:350px;
+    } 
+    }
+
+  @media only screen and (min-width:551px) and (max-width: 767px) {
+    .sliderimage {
+      width:450px;
+      height: 300px;
+    }
+  
+    .sliderimage1{
+      width:350px;
+    } 
+    }
+
+  @media only screen and (min-width:768px) and (max-width: 1024px) {
+    .sliderimage {
+      width:350px;
+      height: 400px;
+      margin-top: 20px !important;
+    }
+  
+    .sliderimage1{
+      width:350px;
+    } 
+    }
+  @media only screen and (min-width:1025px) and (max-width: 1440px) {
+    .sliderimage {
+      width:350px;
+      height: 400px;
+      margin-top: 20px !important;
+    }
+  
+    .sliderimage1{
+      width:350px;
+    } 
+    }
+
+
+    .booked-date {
+      background-color: var(--bs-primary) !important;
+      color:black !important;
+      border: solid 1px black !important;
+    }
+    
+    .selected-date {
+      background-color:var(--bs-info) !important; /* Highlight slot booking dates */
+      color:black !important;         /* Optional: Change text color */            /* Optional: Circle styling */
+    }
+
+    .home-section {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      /* z-index: -1; */
+  }
+  
+  .home-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+      url("./ClgImage/sumgo-home.jpg") center center no-repeat;
+      background-size: cover;
+      /* opacity: 0.8; */
+      filter: blur(7px);
+      z-index: -1;
+  }
+  
+  .content-section1 {
+      z-index: 1;
+      position: relative;
+  }
+  
+
+  .fssize{
+    font-size: 70px;
+  }
+
+  .welcome-section {
+    position: relative;
+    z-index: 1; /* Ensure content is above the background */
+    text-align: center;
+  }
+
+
+  .marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    color: white;
+    font-size: 30px;
+    padding: 10px 0;
+  }
+  
+  .marquee {
+    display: inline-block;
+    animation: marquee 10s linear infinite;
+  }
+  
+  @keyframes marquee {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .notification-icon {
+    animation: pulse 1.5s infinite;
+  }
+
+  .nav-link-hover:hover {
+    color: var(--bs-info) !important;
+  }
+
+  .button-hover:hover{
+    background-color:black !important;
+    color:white !important;
+    border: none !important;
+  }
+
+  .home-section1 {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    z-index: -1;
+}
+
+.home-section1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+    url("./ClgImage/loginsum.jpg") center center no-repeat;
+    background-size: cover;
+    /* opacity: 0.8; */
+    /* filter: blur(2px); */
+    z-index: -1;
+}
+
+.back-color1{
+  background:linear-gradient(to bottom right, #30a8e2,#2a1167);
+  min-height: 100vh;
+}
+
+.text-container {
+  padding-top: 9vh;
+  text-align: center; /* Optional: Align text to the center */
+}
+
+/* Text styles */
+.text-container p {
+  color: white;
+  font-size: 1.5rem; /* Adjust font size */
+  margin-top: 1rem; /* Add top margin */
+  font-weight: bold; /* Make text bold */
+  transition: all 0.3s ease; /* Smooth transition for all properties */
+}
+
+/* Hover effect */
+.text-container p:hover {
+  color: #ffcc00; /* Change text color to yellow on hover */
+  transform: scale(1.1); /* Slightly increase size on hover */
+}
+
+.content-container {
+    margin-left: 250px; /* Matches sidebar width */
+  }
+  .rounded-table {
+  border-radius: 15px !important;
+}
+.table_header th {
+            background-color: #111960 !important;
+            color: white !important;
+            font-weight: 600;
+            font-size: 1rem;
+          }
+          canvas {
+           max-height:321px ;
+           max-width: 100% !important;
+         }
+         
+         .pie-chart canvas {
+           max-width: 200px !important;
+           margin: 0 auto;
+         }
+
+  @media (max-width: 767px) {
+    .sidebar {
+      position: relative;
+      transition: width 0.3s;
+    }
+    .content-container {
+      margin-left: 0;
+    }
+  }
+
+  /* home page */
+@media only screen and (max-width: 768px) {
+  .home-img{
+    width:270px;
+    height: 300px;
+  }  
+  
+  .contactus-img{
+    width: 150px;
+    height: 150px;
+  }
+
+  .marg{
+    margin-top: 150px !important;  
+  }
+
+  .contact-height{
+    height: 22rem !important;
+  }
+  
+}
+
+@media only screen and (min-width:768px) {
+  .contact-height{
+    height: 15rem !important;
+  }
+  
+}
+
+
+
+  @media only screen and (min-width:768px) and (max-width:1023px) {
+    .home-img {
+      width: 350px;
+      height: 350px;
+    }
+
+    .vision-img{
+      width:340px;
+      height: 230px;
+    }
+
+    .contactus-img{
+      width: 250px;
+      height: 200px;
+    }
+  }
+  
+  @media only screen and (min-width:1024px) {
+    .home-img {
+      width: 270px;
+      height: 500px;
+    }
+    .text-md-class{
+      font-size: 20px;
+    }
+
+    .contactus-img{
+      width: 300px;
+      height: 200px;
+    }
+  }
+
+  @media only screen and (min-width:1025px) and (max-width:1200px) {
+    .vision-img{
+      width:450px;
+      height: 290px;
+    }
+  }
+
+  @media only screen and (min-width:1201px) and (max-width:1439px) {
+    .vision-img{
+      width:500px;
+      height: 240px;
+    }
+  }
+  @media only screen  and (min-width:1440px) {
+    .vision-img{
+      width:620px;
+      height: 240px;
+    }
+  }
+
+
+  @media only screen and (max-width:350px) {
+    .vision-img{
+      width:300px;
+      height: 120px;
+      
+    }
+  }
+
+  @media only screen and (min-width:350px) and (max-width:400px) {
+
+    .vision-img{
+      margin-left: 30px;
+      width:300px;
+      height: 120px;
+      
+    }
+  }
+
+  @media only screen and (min-width:400px) and (max-width:500px) {
+    .vision-img{
+      margin-left:40px;
+      width:350px;
+      height: 150px;
+      
+    }
+  }
+
+  @media only screen and (min-width:500px) and (max-width:600px) {
+    .vision-img{
+      margin-left:70px;
+      width:400px;
+      height: 200px;
+      
+    }
+  }
+
+  @media only screen and (min-width:601px) and (max-width:767px) {
+    .vision-img{
+      margin-left:0px;
+      width:540px;
+      height: 200px;
+      
+    }
+  }
+
+
+  /* about us page */
+  @media only screen and (max-width: 550px) {
+    .sliderimage {
+      width:320px;
+      height: 300px;
+    }
+  
+    .sliderimage1{
+      width:350px;
+    } 
+    }
+
+  @media only screen and (min-width:551px) and (max-width: 767px) {
+    .sliderimage {
+      width:450px;
+      height: 300px;
+    }
+  
+    .sliderimage1{
+      width:350px;
+    } 
+    }
+
+  @media only screen and (min-width:768px) and (max-width: 1024px) {
+    .sliderimage {
+      width:350px;
+      height: 400px;
+      margin-top: 20px !important;
+    }
+  
+    .sliderimage1{
+      width:350px;
+    } 
+    }
+  @media only screen and (min-width:1025px) and (max-width: 1440px) {
+    .sliderimage {
+      width:350px;
+      height: 400px;
+      margin-top: 20px !important;
+    }
+  
+    .sliderimage1{
+      width:350px;
+    } 
+    }
+
+
+    .booked-date {
+      background-color: var(--bs-primary) !important;
+      color:black !important;
+      border: solid 1px black !important;
+    }
+    
+    .selected-date {
+      background-color:var(--bs-info) !important; /* Highlight slot booking dates */
+      color:black !important;         /* Optional: Change text color */            /* Optional: Circle styling */
+    }
+
+    .home-section {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      /* z-index: -1; */
+  }
+  
+  .home-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+      url("./Images/sumgo-home.jpg") center center no-repeat;
+      background-size: cover;
+      /* opacity: 0.8; */
+      filter: blur(7px);
+      z-index: -1;
+  }
+  
+  .content-section1 {
+      z-index: 1;
+      position: relative;
+  }
+  
+
+  .fssize{
+    font-size: 70px;
+  }
+
+  .welcome-section {
+    position: relative;
+    z-index: 1; /* Ensure content is above the background */
+    text-align: center;
+  }
+
+
+  .marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    color: white;
+    font-size: 30px;
+    padding: 10px 0;
+  }
+  
+  .marquee {
+    display: inline-block;
+    animation: marquee 10s linear infinite;
+  }
+  
+  @keyframes marquee {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .notification-icon {
+    animation: pulse 1.5s infinite;
+  }
+
+  .nav-link-hover:hover {
+    color: var(--bs-info) !important;
+  }
+
+  .button-hover:hover{
+    background-color:black !important;
+    color:white !important;
+    border: none !important;
+  }
+
+  .home-section1 {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    z-index: -1;
+}
+
+/* .home-section1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+    /* url("./Images/loginsum.jpg") center center no-repeat; 
+    background-size: cover;
+    /* opacity: 0.8; */
+    /* filter: blur(2px); 
+    z-index: -1;
+} */
+
+.back-color1{
+  background:linear-gradient(to bottom right, #30a8e2,#2a1167);
+  min-height: 100vh;
+}
+
+.text-container {
+  padding-top: 9vh;
+  text-align: center; /* Optional: Align text to the center */
+}
+
+/* Text styles */
+.text-container p {
+  color: white;
+  font-size: 1.5rem; /* Adjust font size */
+  margin-top: 1rem; /* Add top margin */
+  font-weight: bold; /* Make text bold */
+  transition: all 0.3s ease; /* Smooth transition for all properties */
+}
+
+/* Hover effect */
+.text-container p:hover {
+  color: #ffcc00; /* Change text color to yellow on hover */
+  transform: scale(1.1); /* Slightly increase size on hover */
+}
+
+
+  

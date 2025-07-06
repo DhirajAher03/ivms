@@ -1,0 +1,155 @@
+.home-page {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.custom-navbar {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  margin: 20px 40px;
+  padding: 10px 20px;
+}
+
+.logo-text {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff !important;
+}
+
+.nav-link-custom {
+  color: #ffffff !important;
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+.login-box-nav {
+  position: relative;
+  margin-left: 20px;
+}
+
+.login-button {
+  font-size: 14px;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 500;
+  background-color: #ffffff;
+  color: #1d2b64;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #ececec;
+  transform: scale(1.05);
+}
+
+.dropdown-menu-custom {
+  position: absolute;
+  right: 0;
+  top: 45px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  animation: fadeIn 0.3s ease-in-out;
+  z-index: 100;
+}
+
+.dropdown-btn {
+  font-size: 13px;
+  color: white;
+  border: 1px solid #ccc;
+  transition: background 0.3s ease;
+}
+
+.dropdown-btn:hover {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero Content Centered */
+.hero-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #e0e0e0;
+}
+
+.subtag {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+/* Footer */
+.footer {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 10px 10px;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.footer h6 {
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.footer p, .footer a {
+  margin: 5px 0;
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li a:hover {
+  text-decoration: underline;
+}
+
+.footer hr {
+  border-color: rgba(255, 255, 255, 0.1);
+  margin-top: 20px;
+}
