@@ -4,7 +4,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 // ✅ Razorpay route import
-const payment_route = require('./routes/paymentRoute'); // ✅ ADD THIS LINE
+const payment_route = require('./routes/PaymentRoute'); // ✅ ADD THIS LINE
 
 // Routes
 const locationroute = require('./location/location_route');
