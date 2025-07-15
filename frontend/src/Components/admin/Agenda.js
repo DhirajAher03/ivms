@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Col, Form, Row, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import api from "../../api";
 
 const Fees = () => {
   const [agenda_title, setAgenda_title] = useState("");
@@ -21,7 +22,7 @@ const Fees = () => {
 
     }
 
-    axios.post("http://localhost:8000/add_agenda", userdata)
+api.post("/api/add_agenda", userdata)
       .then((res) => {
         console.log(res.data.data);
         navigate("/head/getagenda")

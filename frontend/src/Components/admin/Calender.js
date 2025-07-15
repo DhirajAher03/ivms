@@ -4,7 +4,8 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "../../Stylesadm/calendarCustom.css"; // Custom styles for the calendar
+import "../../Stylesadm/calendarCustom.css";
+import api from "../../api";
 
 const Calender = () => {
   const [bookedData, setBookedData] = useState({});
@@ -27,7 +28,7 @@ const Calender = () => {
   useEffect(() => {
     const fetchSlots = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/getvisit");
+        const response = await api.get("/api/getvisit");
         const data = response.data.userData;
 
         const bookings = data.reduce((acc, visit) => {

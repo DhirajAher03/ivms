@@ -15,7 +15,7 @@ const CancelledVisit = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/getvisitone/${id}`)
+      .get(`/api/getvisitone/${id}`)
       .then((res) => {
         setVisitData(res.data.data);
       })
@@ -42,7 +42,7 @@ const CancelledVisit = () => {
         visit_cancelled,
       };
       axios
-        .put(`http://localhost:8000/updatevisit/${cancelid}`, userdata)
+        .put(`/api/updatevisit/${cancelid}`, userdata)
         .then((res) => {
           alert("Visit cancelled successfully");
           navigate("/collegetotalvisit")
@@ -55,71 +55,71 @@ const CancelledVisit = () => {
   };
 
   return (
-    <div  style={{ marginTop:"18vh" }}>
+    <div style={{ marginTop: "18vh" }}>
       <ColHeader />
       <Container>
-    
-      <div className="d-flex justify-content-end mb-4 me-5">
+
+        <div className="d-flex justify-content-end mb-4 me-5">
           <Link to="/collegetotalvisit">
-          <Button className="btn btn-info"><span className="text-white"><IoMdArrowRoundBack size={24}/></span></Button>
-        </Link>
+            <Button className="btn btn-info"><span className="text-white"><IoMdArrowRoundBack size={24} /></span></Button>
+          </Link>
         </div>
-      <Col md={4} className="mx-auto">
-        <div className="container">
-          
-          <form className="shadow shadow-md rounded-5 p-3" onSubmit={handleSubmit}>
-          <h3 className="text-center text-primary mb-4 mt-4">Cancel Visit</h3>
-            <div className="mb-3 text-center">
-              <label htmlFor="collegeName" className="form-label">
-                College Name
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="collegeName"
-                value={collegename}
-                disabled
-              />
-            </div>
+        <Col md={4} className="mx-auto">
+          <div className="container">
 
-            <div className="mb-3 text-center">
-              <label htmlFor="visitDate" className="form-label">
-                Visit Date
-              </label>
-              <Form.Control
-                type="text"
-                value={formatDate(visitData.Date_of_visit)}
-                readOnly
-              ></Form.Control>
-            </div>
+            <form className="shadow shadow-md rounded-5 p-3" onSubmit={handleSubmit}>
+              <h3 className="text-center text-primary mb-4 mt-4">Cancel Visit</h3>
+              <div className="mb-3 text-center">
+                <label htmlFor="collegeName" className="form-label">
+                  College Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="collegeName"
+                  value={collegename}
+                  disabled
+                />
+              </div>
 
-            <div className="mb-3 text-center">
-              <label className="form-label">Select Visit Status</label>
-              <Form.Select
-                aria-label="Select Visit Status"
-                value={visit_cancelled}
-                onChange={(e) => setVisitStatus(e.target.value)}
-              >
-                <option value="">Select status</option>
-                {visitData.fees_status === "paid" && (
-                  <option value="rescheduled">Rescheduled</option>
-                  
-                )}
+              <div className="mb-3 text-center">
+                <label htmlFor="visitDate" className="form-label">
+                  Visit Date
+                </label>
+                <Form.Control
+                  type="text"
+                  value={formatDate(visitData.Date_of_visit)}
+                  readOnly
+                ></Form.Control>
+              </div>
 
-                {visitData.fees_status === "unpaid" && (
-                  <option value="cancelled">Cancelled</option>
-                )}
-              </Form.Select>
-            </div>
+              <div className="mb-3 text-center">
+                <label className="form-label">Select Visit Status</label>
+                <Form.Select
+                  aria-label="Select Visit Status"
+                  value={visit_cancelled}
+                  onChange={(e) => setVisitStatus(e.target.value)}
+                >
+                  <option value="">Select status</option>
+                  {visitData.fees_status === "paid" && (
+                    <option value="rescheduled">Rescheduled</option>
 
-            <div className="mb-3 text-center">
-              <Button variant="info" type="submit">
-                Submit
-              </Button>
-            </div>
-          </form>
-        </div>
-      </Col>
+                  )}
+
+                  {visitData.fees_status === "unpaid" && (
+                    <option value="cancelled">Cancelled</option>
+                  )}
+                </Form.Select>
+              </div>
+
+              <div className="mb-3 text-center">
+                <Button variant="info" type="submit">
+                  Submit
+                </Button>
+              </div>
+            </form>
+          </div>
+        </Col>
       </Container>
     </div>
   );

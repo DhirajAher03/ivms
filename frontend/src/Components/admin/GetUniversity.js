@@ -14,7 +14,7 @@ const GetUniversity = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/getuniversity")
+      .get("/api/getuniversity")
       .then((res) => {
         setUniversityData(res.data.data);
       })
@@ -27,7 +27,7 @@ const GetUniversity = () => {
     const confirmDelete = window.confirm("Are you sure you want to delete this university?");
     if (confirmDelete) {
       axios
-        .delete(`http://localhost:8000/deleteuniversity/${id}`)
+        .delete(`/api/deleteuniversity/${id}`)
         .then((res) => {
           alert("University Deleted Successfully");
           // Optionally, refresh the data here by fetching again

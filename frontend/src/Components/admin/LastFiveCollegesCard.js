@@ -4,12 +4,13 @@ import "jspdf-autotable";
 import { Table, Container } from "react-bootstrap";
 import "../../App.css";
 import "../../Stylesadm/LastFiveCollegesCard.css";
+import api from "../../api";
 
 const CollegeTotalVisit = () => {
   const [colleges, setColleges] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/getvisit')
+    api.get('/api/getvisit')
       .then(res => {
         const lastFive = res.data.userData.slice(-5).reverse();
         setColleges(lastFive);

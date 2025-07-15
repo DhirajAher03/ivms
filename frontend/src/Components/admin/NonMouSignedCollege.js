@@ -13,7 +13,7 @@ const NonMouSigned = () => {
   const visitsPerPage = 10; // Number of rows per page
   useEffect(() => {
     axios
-      .get("http://localhost:8000/get_registration")
+      .get("/api/get_registration")
       .then((res) => {
         const filterdmoudata = res.data.data.filter(
           (visit) => visit.reg_mou_sign === "No"

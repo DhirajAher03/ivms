@@ -4,6 +4,7 @@ import { Button, Col, Form, Row, Container } from "react-bootstrap";
 import { FaCaretDown } from "react-icons/fa";
 // import { FaCaretDown } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import api from "../../api";
 
 const Update_district = () => {
   const [district_state, setDistrictstate] = useState("");
@@ -17,8 +18,8 @@ const Update_district = () => {
 
   // Fetch city data for updating
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/getonedistrict/${id}`)
+    api
+      .get(`/api/getonedistrict/${id}`)
       .then((response) => {
         console.log(response.data.data);
         setDistrictdata(response.data);
@@ -31,8 +32,8 @@ const Update_district = () => {
 
   //   get API for state
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/getstate")
+    api
+      .get("/api/getstate")
       .then((res) => {
         const filtestate = res.data.data.filter((state) => state.state_status === "active")
         setStatedata(filtestate);
@@ -55,8 +56,8 @@ const Update_district = () => {
       district_status,
     };
 
-    axios
-      .put(`http://localhost:8000/updatedistrict/${id}`, userdata)
+    api
+      .put(`/api/updatedistrict/${id}`, userdata)
       .then(() => {
         console.log("City updated successfully");
         navigate("/head/district");

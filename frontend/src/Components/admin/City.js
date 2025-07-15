@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Row, Container } from "react-bootstrap";
 import { FaCaretDown } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import api from "../../api";
 
 const City = () => {
   const [city_state, setCityState] = useState("");
@@ -16,8 +17,8 @@ const City = () => {
 
   //   get API for state
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/getstate")
+    api
+      .get("/api/getstate")
       .then((res) => {
         const data = res.data.data;
         const stateData = data.filter((state) => state.state_status === "active")
@@ -30,7 +31,7 @@ const City = () => {
   useEffect(() => {
     if (city_state) {
       axios
-        .get("http://localhost:8000/getdistrict")
+        .get("/api/getdistrict")
         .then((res) => {
           const filteredDistricts = res.data.data.filter(
             (district) => district.district_state === city_state && district.district_status === "active"
@@ -53,7 +54,7 @@ const City = () => {
     };
 
     axios
-      .post("http://localhost:8000/addcity", userdata)
+      .post("/api/addcity", userdata)
       .then((res) => {
         handleClear();
         navigate("/head/city");

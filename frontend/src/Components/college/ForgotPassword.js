@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import api from "../../api";
+
 
 const ForgetPasswordComponent = () => {
   const [data, setData] = useState([]);
@@ -15,8 +17,8 @@ const ForgetPasswordComponent = () => {
 
   // Fetch the list of emails from the database
   useEffect(() => {
-    axios
-      .get('http://localhost:8000/get_registration')
+    api
+      .get('/api/get_registration')
       .then((res) => {
         setData(res.data.data);
       })
@@ -29,7 +31,7 @@ const ForgetPasswordComponent = () => {
     if (user) {
       try {
         // Send verification email
-        await axios.post('http://localhost:8000/updateemail', {
+        await api.post('/api/updateemail', {
           email: reg_college_email_id,
           link: `http://localhost:3000/forget?email=${encodeURIComponent(
             reg_college_email_id
@@ -68,7 +70,7 @@ const ForgetPasswordComponent = () => {
     }
 
     try {
-      await axios.put(`http://localhost:8000/forget`, {
+      await api.put(`/api/forget`, {
         reg_college_email_id,
         reg_password,
       });

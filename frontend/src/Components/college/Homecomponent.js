@@ -22,6 +22,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import WOW from "wowjs";
 import "animate.css";
+import api from "../../api";
+
 
 const Homecomponent = () => {
   const [bookedData, setBookedData] = useState({}); // Store booked slots
@@ -60,7 +62,7 @@ const Homecomponent = () => {
   useEffect(() => {
     const fetchSlots = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/getvisit");
+        const response = await api.get("/api/getvisit");
         const data = response.data.userData;
 
         const bookings = data.reduce((acc, visit) => {
@@ -86,7 +88,7 @@ const Homecomponent = () => {
   useEffect(() => {
     const fetchReports = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/getvisit");
+        const response = await api.get("/api/getvisit");
         const data = response.data.userData.filter(
           (visit) => visit.college_name === collegename
         );
@@ -183,16 +185,16 @@ const Homecomponent = () => {
           className=" d-flex flex-column justify-content-center"
           style={{ height: "100vh" }}
         >
-          <h3 className="text-center text-white  fssize content-section1" style={{marginTop:"30px"}}>WELCOME</h3>
+          <h3 className="text-center text-white  fssize content-section1" style={{ marginTop: "30px" }}>WELCOME</h3>
           <h3
             className="text-center text-info content-section1 "
-            style={{ fontSize: "40px"}}
+            style={{ fontSize: "40px" }}
           >
             {collegename}
           </h3>
 
-          <div className=" text-center text-white content-section1 " style={{marginTop:"80px"}}>
-            <p className="fs-2" style={{font:"italic  24px/1 cursive"}}>Bridging the gap between classroom concepts and industry practices</p>
+          <div className=" text-center text-white content-section1 " style={{ marginTop: "80px" }}>
+            <p className="fs-2" style={{ font: "italic  24px/1 cursive" }}>Bridging the gap between classroom concepts and industry practices</p>
           </div>
 
           <div className="text-center mt-2">
@@ -203,7 +205,7 @@ const Homecomponent = () => {
             </Link>
           </div>
 
-          
+
         </Container>
       </div>
 
@@ -213,7 +215,7 @@ const Homecomponent = () => {
           {/* Report Cards */}
           <Col lg={8} md={12} xs={12} className="mt-4 ">
             <Row>
-              <h2 className="text-center mb-4 mt-4" style={{color:"rgb(7 10 92"}}>Reports</h2>
+              <h2 className="text-center mb-4 mt-4" style={{ color: "rgb(7 10 92" }}>Reports</h2>
               <Col md={3} xs={8} className="mx-auto me-md-4">
                 <Card
                   className="me-2 shadow shadow-md rounded-4 border border-0"
@@ -278,7 +280,7 @@ const Homecomponent = () => {
                   style={{
                     width: "15rem",
                     height: "20rem",
-                   background: "linear-gradient(190deg,#9ef4f2, #ffffff, #9ef4f2)",
+                    background: "linear-gradient(190deg,#9ef4f2, #ffffff, #9ef4f2)",
                   }}
                 >
                   <Card.Body className="d-flex flex-column">
@@ -305,7 +307,7 @@ const Homecomponent = () => {
           </Col>
           {/* Calendar */}
           <Col md={12} lg={4} xs={12} className="mt-4">
-            <h2 className="text-center mt-4 mb-3" style={{color:"rgb(7 10 92"}}>Booked Slots</h2>
+            <h2 className="text-center mt-4 mb-3" style={{ color: "rgb(7 10 92" }}>Booked Slots</h2>
             <div className="ms-3  d-flex flex-column justify-content-md-center mb-3 ms-lg-5   ">
               <Calendar
                 className="shadow shadow-md"
@@ -316,8 +318,8 @@ const Homecomponent = () => {
                 } // Disable past dates
               />
               {/* Date coloring */}
-              <p className="mt-3"><span className="px-2 me-1" style={{backgroundColor:"yellow"}}></span><span>Current Date</span><span className="bg-primary  px-2 me-1 ms-2"></span> <span>Booked Date</span>
-              <span className="bg-info  px-2 ms-2"></span> <span>Date Selected</span></p>
+              <p className="mt-3"><span className="px-2 me-1" style={{ backgroundColor: "yellow" }}></span><span>Current Date</span><span className="bg-primary  px-2 me-1 ms-2"></span> <span>Booked Date</span>
+                <span className="bg-info  px-2 ms-2"></span> <span>Date Selected</span></p>
               {/* Modal */}
               <Modal show={showModal} onHide={closeModal}>
                 <Modal.Header closeButton>
@@ -358,68 +360,68 @@ const Homecomponent = () => {
       {/* Rules and regulations */}
       <Container className="rules">
         <Row className="mt-5">
-          <Card className=" border border-0" style={{height:"12rem"}}>
-        <h3 className="text-center mb-2" data-aos="fade-up"style={{color:"rgb(7 10 92"}}>
-            Code Of Conduct For Attending IV
-          </h3>
-          <Row>
-          <Col md={6} sm={12} className="mt-4">
-            <ul className="list-unstyled">
-              <li
-                className="text-md-class mb-2"
-                data-aos="fade-left"
-                data-aos-delay="200"
-              >
-                <FaCheckCircle className="text-info me-2" />
-                All students must be in their college uniform.
-              </li>
-              <li
-                className="text-md-class mb-2"
-                data-aos="fade-left"
-                data-aos-delay="400"
-              >
-                <FaCheckCircle className="text-info me-2" />
-                All students should wear their identity cards.
-              </li>
-              <li
-                className="text-md-class mb-2"
-                data-aos="fade-left"
-                data-aos-delay="600"
-              >
-                <FaCheckCircle className="text-info me-2" />
-                Maintain discipline during visit.
-              </li>
-            </ul>
-          </Col>
-          <Col md={6} sm={12} className="mt-4">
-            <ul className="list-unstyled">
-              <li
-                className="text-md-class mb-2"
-                data-aos="fade-left"
-                data-aos-delay="800"
-              >
-                <FaCheckCircle className="text-info me-2" />
-                Be polite and professional while interacting with the staff.
-              </li>
-              <li
-                className="text-md-class mb-2"
-                data-aos="fade-left"
-                data-aos-delay="1000"
-              >
-                <FaCheckCircle className="text-info me-2" />
-                Avoid touching system.
-              </li>
-              <li
-                className="text-md-class mb-2"
-                data-aos="fade-left"
-                data-aos-delay="1200"
-              >
-                <FaCheckCircle className="text-info me-2" />
-                All student supposed to follow the agenda for visit.
-              </li>
-            </ul>  
-          </Col>
-          </Row>
+          <Card className=" border border-0" style={{ height: "12rem" }}>
+            <h3 className="text-center mb-2" data-aos="fade-up" style={{ color: "rgb(7 10 92" }}>
+              Code Of Conduct For Attending IV
+            </h3>
+            <Row>
+              <Col md={6} sm={12} className="mt-4">
+                <ul className="list-unstyled">
+                  <li
+                    className="text-md-class mb-2"
+                    data-aos="fade-left"
+                    data-aos-delay="200"
+                  >
+                    <FaCheckCircle className="text-info me-2" />
+                    All students must be in their college uniform.
+                  </li>
+                  <li
+                    className="text-md-class mb-2"
+                    data-aos="fade-left"
+                    data-aos-delay="400"
+                  >
+                    <FaCheckCircle className="text-info me-2" />
+                    All students should wear their identity cards.
+                  </li>
+                  <li
+                    className="text-md-class mb-2"
+                    data-aos="fade-left"
+                    data-aos-delay="600"
+                  >
+                    <FaCheckCircle className="text-info me-2" />
+                    Maintain discipline during visit.
+                  </li>
+                </ul>
+              </Col>
+              <Col md={6} sm={12} className="mt-4">
+                <ul className="list-unstyled">
+                  <li
+                    className="text-md-class mb-2"
+                    data-aos="fade-left"
+                    data-aos-delay="800"
+                  >
+                    <FaCheckCircle className="text-info me-2" />
+                    Be polite and professional while interacting with the staff.
+                  </li>
+                  <li
+                    className="text-md-class mb-2"
+                    data-aos="fade-left"
+                    data-aos-delay="1000"
+                  >
+                    <FaCheckCircle className="text-info me-2" />
+                    Avoid touching system.
+                  </li>
+                  <li
+                    className="text-md-class mb-2"
+                    data-aos="fade-left"
+                    data-aos-delay="1200"
+                  >
+                    <FaCheckCircle className="text-info me-2" />
+                    All student supposed to follow the agenda for visit.
+                  </li>
+                </ul>
+              </Col>
+            </Row>
           </Card>
         </Row>
       </Container>
@@ -428,7 +430,7 @@ const Homecomponent = () => {
       {/* Contact Section */}
       <Container fluid className="marg" >
         <Row className="contact-height mt-md-4" style={{ backgroundColor: "#9ef4f2" }}>
-        {/* c3e7eb */}
+          {/* c3e7eb */}
           {/* Left Column */}
           <Col md={6} sm={12} className="text-center mt-5" >
             <h3 className="text-dark">
@@ -467,7 +469,7 @@ const Homecomponent = () => {
               src={vision}
               alt="Our Vision"
               className="vision-img mt-4 rounded-2"
-              style={{height:"300px"}} 
+              style={{ height: "300px" }}
             />
           </Col>
           <Col
@@ -476,7 +478,7 @@ const Homecomponent = () => {
             data-wow-delay="0.3s"
           >
             {/* <Card className="p-4 shadow shadow-md border border-0 rounded-5"> */}
-            <h2 className="text-center  fs-2 mt-3" style={{color:"rgb(7 10 92"}}>
+            <h2 className="text-center  fs-2 mt-3" style={{ color: "rgb(7 10 92" }}>
               Our Vision
             </h2>
             <p

@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import LastFiveCollegesCard from "./LastFiveCollegesCard";
 import VisitsGraph from "./VisitsGraph";
+import api from "../../api";
 
 const WaveSVG = ({ fill }) => (
   <svg
@@ -95,7 +96,7 @@ const Dashboard = () => {
   const [cancelledVisitCount, setCancelledVisitCount] = useState(0);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/get_registration")
+    api.get("/api/get_registration")
       .then((res) => {
         const data = res.data.data;
         setCollegeData(data);
@@ -113,7 +114,7 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/getvisit")
+    api.get("/api/getvisit")
       .then((res) => {
         const data = res.data.userData;
         setVisitData(data);

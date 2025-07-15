@@ -6,6 +6,7 @@ import "jspdf-autotable";
 import * as XLSX from "xlsx"; // For exporting Excel
 import { Table, Button, Container, Pagination } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import api from "../../api";
 
 const TotalCollege = () => {
   const [collegeData, setCollegeData] = useState([]);
@@ -13,7 +14,7 @@ const TotalCollege = () => {
   const visitsPerPage = 10; // Number of rows per page
 
   useEffect(() => {
-    axios.get("http://localhost:8000/get_registration").then((res) => {
+    api.get("/api/get_registration").then((res) => {
       setCollegeData(res.data.data);
     });
   }, []);

@@ -14,7 +14,7 @@ const Profile = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/get_registration_one/${id}`)
+      .get(`/api/get_registration_one/${id}`)
       .then((res) => {
         setProfileData(res.data.userData);
         console.log("hi", res.data.userData);

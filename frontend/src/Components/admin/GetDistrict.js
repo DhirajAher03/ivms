@@ -14,7 +14,7 @@ const GetDistrict = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/getdistrict")
+      .get("/api/getdistrict")
       .then((res) => {
         setDistrictData(res.data.data);
       })
@@ -28,7 +28,7 @@ const GetDistrict = () => {
     const confirmDelete = window.confirm("Are you sure you want to delete this district?");
     if (confirmDelete) {
       axios
-        .delete(`http://localhost:8000/deletedistrict/${id}`)
+        .delete(`/api/deletedistrict/${id}`)
         .then((res) => {
           alert("District Deleted Successfully");
           // Optionally, refresh the data here by fetching again

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "../../Stylesadm/GalleryAdd.css"; // Importing external CSS for bubbles
+import api from "../../api";
 
 const GalleryAdd = () => {
   const [visitData, setVisitData] = useState([]);
@@ -19,8 +20,8 @@ const GalleryAdd = () => {
   };
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/getvisit")
+    api
+      .get("/api/getvisit")
       .then((res) => {
         const data = res.data.userData;
         setVisitData(data);
@@ -75,7 +76,7 @@ const GalleryAdd = () => {
     });
 
     axios
-      .post(`http://localhost:8000/addgallery`, formdata)
+      .post(`/api/addgallery`, formdata)
       .then(() => {
         handleClear();
         alert("Gallery added successfully!");

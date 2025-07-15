@@ -6,6 +6,7 @@ import "jspdf-autotable";
 import * as XLSX from "xlsx"; // For exporting Excel
 import { Table, Button, Container, Pagination } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import api from "../../api";
 
 const GetState = () => {
   const [visitData, setVisitData] = useState([]);
@@ -13,8 +14,8 @@ const GetState = () => {
   const visitsPerPage = 10; // Number of rows per page
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/getvisit")
+    api
+      .get("/api/getvisit")
       .then((res) => {
         const data = res.data.userData;
         setVisitData(data);

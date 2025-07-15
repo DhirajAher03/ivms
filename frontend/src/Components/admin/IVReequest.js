@@ -57,7 +57,7 @@ const IVRequest = () => {
 
   const fetchVisitData = () => {
     axios
-      .get("http://localhost:8000/getvisit")
+      .get("/api/getvisit")
       .then((res) => {
         const data = res.data.userData;
         const pending = data.filter(
@@ -129,7 +129,7 @@ const IVRequest = () => {
 
   const handleUpdate = () => {
     axios
-      .put(`http://localhost:8000/updatevisit/${id}`, {
+      .put(`/api/updatevisit/${id}`, {
         college_name: collegeName,
         Visit_accept,
       })
@@ -142,7 +142,7 @@ const IVRequest = () => {
 
   const handleReject = () => {
     axios
-      .put(`http://localhost:8000/updatevisit/${id}`, {
+      .put(`/api/updatevisit/${id}`, {
         college_name: collegeName,
         reason,
         Visit_accept,
@@ -163,7 +163,7 @@ const IVRequest = () => {
     }
 
     axios
-      .put(`http://localhost:8000/updatevisit/${visitId}`, { fees: parsedFee })
+      .put(`/api/updatevisit/${visitId}`, { fees: parsedFee })
       .then(() => {
         alert("✅ Fees updated successfully!");
         setEditFeeId(null);

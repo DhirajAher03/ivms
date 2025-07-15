@@ -8,6 +8,8 @@ import { Table, Button, Container, Pagination } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ColHeader from "./Navbar";
 import { MdDelete, MdPictureAsPdf, MdFileDownload, MdAddCircle } from "react-icons/md";
+import api from "../../api";
+
 
 const CollegeTotalVisit = () => {
   const [ivcount, setIvcount] = useState([]);
@@ -16,7 +18,7 @@ const CollegeTotalVisit = () => {
   const visitsPerPage = 10;
 
   useEffect(() => {
-    axios.get("http://localhost:8000/getvisit").then((res) => {
+    api.get("/api/getvisit").then((res) => {
       const data = res.data.userData;
       const totalIV = data.filter(
         (TIV) =>

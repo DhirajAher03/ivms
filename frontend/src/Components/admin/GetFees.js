@@ -14,7 +14,7 @@ const GetFees = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/get_fees")
+      .get("/api/get_fees")
       .then((res) => {
         setFeesData(res.data.data);
       })
@@ -27,7 +27,7 @@ const GetFees = () => {
     const confirmDelete = window.confirm("Are you sure you want to delete this fees?");
     if (confirmDelete) {
       axios
-        .delete(`http://localhost:8000/delete_fees/${id}`)
+        .delete(`/api/delete_fees/${id}`)
         .then((res) => {
           alert("Fees Deleted Successfully");
           // Optionally, refresh the data here by fetching again

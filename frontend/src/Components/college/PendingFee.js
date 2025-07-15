@@ -4,6 +4,8 @@ import { Button, Col, Form, Row, Container } from "react-bootstrap";
 import ColHeader from "./Navbar";
 import { useNavigate } from "react-router-dom";
 
+import api from "../../api";
+
 const PendingFee = () => {
   const [datedata, setDateData] = useState([]);
   const [selectedFee, setSelectedFee] = useState("");
@@ -12,8 +14,8 @@ const PendingFee = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/getvisit")
+    api
+      .get("/api/getvisit")
       .then((response) => {
         const data = response.data.userData || [];
         const filtered = data.filter(
@@ -68,7 +70,7 @@ const PendingFee = () => {
     }
 
     try {
-      const { data: order } = await axios.post("http://localhost:8000/create-order", {
+      const { data: order } = await api.post("/api/create-order", {
         amount,
       });
 
@@ -82,7 +84,7 @@ const PendingFee = () => {
         handler: async function (response) {
           try {
             // ✅ Update payment status in backend
-            await axios.put(`http://localhost:8000/updatevisit/${id}`, {
+            await api.put(`/api/updatevisit/${id}`, {
               fees_status: "paid",
               transaction_id: response.razorpay_payment_id,
             });

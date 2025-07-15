@@ -6,6 +6,8 @@ import { MdFileDownload } from "react-icons/md";
 import { GrFormPreviousLink } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import api from "../../api";
+
 
 const TotalVisit = () => {
   const [ivcount, setIvcount] = useState([]);
@@ -15,7 +17,7 @@ const TotalVisit = () => {
   const visitsPerPage = 10; // Number of rows per page
 
   useEffect(() => {
-    axios.get("http://localhost:8000/getvisit")
+    api.get("/api/getvisit")
       .then((res) => {
         setCollegeData(res.data.userData);
         const data = res.data.userData;
@@ -57,14 +59,14 @@ const TotalVisit = () => {
   };
 
   return (
-    <div style={{paddingTop:'15vh'}}>
+    <div style={{ paddingTop: '15vh' }}>
       <ColHeader></ColHeader>
       <Container>
         <h2 className="my-3 text-center text-primary">Total Visits</h2>
         <div className="d-flex justify-content-end mb-4">
           <Link to="/home">
-          <Button className="btn btn-info"><span className="text-white"><IoMdArrowRoundBack size={24}/></span></Button>
-        </Link>
+            <Button className="btn btn-info"><span className="text-white"><IoMdArrowRoundBack size={24} /></span></Button>
+          </Link>
         </div>
         <Table striped bordered hover responsive>
           <thead className="thead-dark">

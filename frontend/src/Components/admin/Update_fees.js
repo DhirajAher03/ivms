@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState, } from "react";
 import { Button, Col, Form, Row, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import api from "../../api";
 
 const Update_fees = () => {
   const [feesData, setFeesData] = useState({});
@@ -20,8 +21,8 @@ const Update_fees = () => {
       fees_status
     }
 
-    axios
-      .put(`http://localhost:8000/update_fees/${id}`, userdata)
+    api
+      .put(`/api/update_fees/${id}`, userdata)
       .then((res) => {
         alert("fees Details Updated Successfully");
         navigate("/head/getfees")
@@ -33,8 +34,8 @@ const Update_fees = () => {
   };
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/get_fees_one/${id}`)
+    api
+      .get(`/api/get_fees_one/${id}`)
       .then((res) => {
         setFeesData(res.data.data);
         const data = res.data.data;

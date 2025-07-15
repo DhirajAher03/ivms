@@ -4,14 +4,16 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import ColHeader from "./Navbar";
 import agenda from "../../Images/Agenda.jpg";
 import { IoMdArrowRoundBack, IoMdArrowRoundForward } from "react-icons/io";
+import api from "../../api";
+
 
 const Agenda = () => {
   const [agendaData, setAgendaData] = useState([]);
   const scrollRef = useRef(null);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/get_agenda")
+    api
+      .get("/api/get_agenda")
       .then((res) => {
         const data = res.data.data;
         const activeAgenda = data.filter((a) => a.agenda_status === "active");

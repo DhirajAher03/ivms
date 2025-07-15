@@ -14,7 +14,7 @@ const GetCity = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/getcity")
+      .get("/api/getcity")
       .then((res) => {
         setCityData(res.data.data);
       })
@@ -27,7 +27,7 @@ const GetCity = () => {
     const confirmDelete = window.confirm("Are you sure you want to delete this city?");
     if (confirmDelete) {
       axios
-        .delete(`http://localhost:8000/deletecity/${id}`)
+        .delete(`/api/deletecity/${id}`)
         .then((res) => {
           alert("City Deleted Successfully");
           // Optionally, refresh the data here by fetching again

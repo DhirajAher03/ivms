@@ -15,7 +15,7 @@ const GetState = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/getstate")
+      .get("/api/getstate")
       .then((res) => {
         setStateData(res.data.data);
       })
@@ -28,7 +28,7 @@ const GetState = () => {
     const confirmDelete = window.confirm("Are you sure you want to delete this state?");
     if (confirmDelete) {
       axios
-        .delete(`http://localhost:8000/deletestate/${id}`)
+        .delete(`/api/deletestate/${id}`)
         .then((res) => {
           alert("State Deleted Successfully");
           // Optionally, refresh the data here by fetching again
@@ -96,7 +96,7 @@ const GetState = () => {
         </Link>
       </div>
 
-      <Table striped bordered hover responsive className="shadow-sm rounded-table custom-professional-table"> 
+      <Table striped bordered hover responsive className="shadow-sm rounded-table custom-professional-table">
         <thead className="table_header text-center">
           <tr className="text-center">
             <th>Sr.</th>

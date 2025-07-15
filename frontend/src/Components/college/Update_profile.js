@@ -9,6 +9,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import update_profile from "../../Images/update_profile.jpg"
+import api from "../../api";
+
 
 const UpdateProfile = () => {
   const [profileData, setProfileData] = useState({
@@ -36,8 +38,8 @@ const UpdateProfile = () => {
 
   // Fetch user data
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/get_registration_one/${id}`)
+    api
+      .get(`/api/get_registration_one/${id}`)
       .then((res) => {
         setProfileData(res.data.userData);
         console.log("data", res.data.userData)
@@ -51,16 +53,16 @@ const UpdateProfile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const statesResponse = await axios.get("http://localhost:8000/getstate");
+        const statesResponse = await api.get("/api/getstate");
         setStates(statesResponse.data.data);
 
-        const districtsResponse = await axios.get("http://localhost:8000/getdistrict");
+        const districtsResponse = await api.get("/api/getdistrict");
         setDistricts(districtsResponse.data.data);
 
-        const citiesResponse = await axios.get("http://localhost:8000/getcity");
+        const citiesResponse = await api.get("/api/getcity");
         setCities(citiesResponse.data.data);
 
-        const universitiesResponse = await axios.get("http://localhost:8000/getuniversity");
+        const universitiesResponse = await api.get("/api/getuniversity");
         setUniversities(universitiesResponse.data.data);
       } catch (error) {
         console.error("Error fetching dropdown data:", error);
@@ -79,8 +81,8 @@ const UpdateProfile = () => {
   // Submit form
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .put(`http://localhost:8000/update_registration/${id}`, profileData)
+    api
+      .put(`/api/update_registration/${id}`, profileData)
       .then((res) => {
 
         alert("Profile updated successfully!");
@@ -96,14 +98,14 @@ const UpdateProfile = () => {
       <ColHeader />
       <Container>
         <Row>
-        <Col md={5} className="mt-5">
-        <img
-        src={update_profile}
-        alt="Agenda"
-        className="mt-5 rounded-2"
-        style={{ height: "550px", width: "600px" }}
-      />
-        </Col>
+          <Col md={5} className="mt-5">
+            <img
+              src={update_profile}
+              alt="Agenda"
+              className="mt-5 rounded-2"
+              style={{ height: "550px", width: "600px" }}
+            />
+          </Col>
           <Col md={7} className="mx-auto">
             <div className="d-flex justify-content-end mb-3">
               <Link to="/home" className="text-decoration-none">
@@ -117,7 +119,7 @@ const UpdateProfile = () => {
             </div>
             <Container className="p-4 mb-4 shadow shadow-md">
               <Form onSubmit={handleSubmit} >
-              <h2 className="text-center mb-4 text-primary ">Update Profile</h2>
+                <h2 className="text-center mb-4 text-primary ">Update Profile</h2>
                 <Row>
                   <Col md={6} sm={12} className="">
                     {/* College Name */}
@@ -205,7 +207,7 @@ const UpdateProfile = () => {
                       </Form.Select>
                     </Form.Group>
 
-                    
+
                   </Col>
                   <Col md={6} sm={12}>
                     {/* Contact Person */}
@@ -326,18 +328,18 @@ const UpdateProfile = () => {
                   </Col>
                 </Row>
 
-{/* Principal Name */}
-<Form.Group className="mb-3 text-center ms-4 me-4" controlId="formGroupPrincipalName">
-<Form.Label className="fw-bold">Principal Name:</Form.Label>
-<Form.Control
-  required
-  type="text"
-  name="reg_principal_name"
-  value={profileData.reg_principal_name}
-  onChange={handleChange}
-  placeholder="Enter Principal Name"
-/>
-</Form.Group>
+                {/* Principal Name */}
+                <Form.Group className="mb-3 text-center ms-4 me-4" controlId="formGroupPrincipalName">
+                  <Form.Label className="fw-bold">Principal Name:</Form.Label>
+                  <Form.Control
+                    required
+                    type="text"
+                    name="reg_principal_name"
+                    value={profileData.reg_principal_name}
+                    onChange={handleChange}
+                    placeholder="Enter Principal Name"
+                  />
+                </Form.Group>
 
 
                 <div className="text-center">

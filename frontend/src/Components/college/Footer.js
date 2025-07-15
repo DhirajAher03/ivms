@@ -7,6 +7,8 @@ import { FaArrowRight, FaPhoneAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../../App.css"
 import { FaYoutube, FaInstagram, FaLinkedin } from "react-icons/fa";
+import api from "../../api";
+
 
 const Footer = () => {
   return (

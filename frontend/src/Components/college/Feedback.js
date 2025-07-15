@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Row, Container } from "react-bootstrap";
 import { FaCaretDown } from "react-icons/fa";
 import ColHeader from "./Navbar";
+import api from "../../api";
+
 
 const Feedback = () => {
   const [feedback_Visit_Date, setVisitDate] = useState("");
@@ -13,8 +15,8 @@ const Feedback = () => {
   const college_name = localStorage.getItem("CollegeName");
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/getvisit")
+    api
+      .get("/api/getvisit")
       .then((res) => {
         const data = res.data.userData;
         setVisitData(data);
@@ -51,8 +53,8 @@ const Feedback = () => {
       feedback_message,
     };
 
-    axios
-      .post("http://localhost:8000/addfeedback", userdata)
+    api
+      .post("/api/addfeedback", userdata)
       .then((res) => {
         alert("Feedback submitted successfully!");
         handleClear();
@@ -93,7 +95,7 @@ const Feedback = () => {
             className="text-center mb-4"
             style={{ color: "rgb(7 10 92)", fontWeight: "700" }}
           >
-           GIVE FEEDBACK  
+            GIVE FEEDBACK
           </h2>
 
           <Form.Group className="mb-4 text-center">

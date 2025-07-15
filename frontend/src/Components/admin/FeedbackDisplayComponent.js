@@ -5,14 +5,15 @@ import jsPDF from "jspdf"; // For exporting PDF
 import "jspdf-autotable";
 import * as XLSX from "xlsx"; // For exporting Excel
 import { CSVLink } from "react-csv"; // For exporting CSV
+import api from "../../api";
 
 const FeedbackDisplayComponent = () => {
 
   const [feedbackData, setFeeddbackdata] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/getfeedback")
+    api
+      .get("/api/getfeedback")
       .then((res) => {
         setFeeddbackdata(res.data.data);
       })

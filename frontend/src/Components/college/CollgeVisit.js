@@ -10,6 +10,8 @@ import ColHeader from "./Navbar";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import api from "../../api";
+
 
 const ColLogin = () => {
   const [number_of_students, setNumberofStudent] = useState("");
@@ -29,7 +31,7 @@ const ColLogin = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:8000/getlocation").then((res) => {
+    api.get("/api/getlocation").then((res) => {
       const data = res.data.data;
       const stateData = data.filter(
         (state) => state.location_status === "active"
@@ -39,7 +41,7 @@ const ColLogin = () => {
   }, []);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/getvisit").then((res) => {
+    api.get("/api/getvisit").then((res) => {
       setVisitData(res.data.userData);
     });
   }, []);
@@ -97,8 +99,8 @@ const ColLogin = () => {
     formData.append("comment", comment);
     formData.append("mousigned", mousigned);
 
-    axios
-      .post("http://localhost:8000/addvisit", formData, {
+    api
+      .post("/api/addvisit", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

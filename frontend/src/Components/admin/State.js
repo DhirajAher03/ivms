@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Col, Form, Row, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import api from "../../api";
 
 const State = () => {
   const [state_name, setStatename] = useState("");
@@ -17,7 +18,7 @@ const State = () => {
       state_status,
     }
 
-    axios.post("http://localhost:8000/addstate", userdata)
+    api.post("/api/addstate", userdata)
       .then((res) => {
         console.log(res.data.data);
         navigate("/head/getstate");

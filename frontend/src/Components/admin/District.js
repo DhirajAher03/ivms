@@ -4,7 +4,7 @@ import { Button, Col, Form, Row, Container } from "react-bootstrap";
 import { FaCaretDown } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { IoIosArrowDropdown } from "react-icons/io";
-
+import api from "../../api";
 const District = () => {
   const [district_state, setDistrictState] = useState("");
   const [district_name, setDistrictame] = useState("");
@@ -15,7 +15,7 @@ const District = () => {
   //   get api
   useEffect(() => {
     axios
-      .get("http://localhost:8000/getstate")
+      .get("/api/getstate")
       .then((res) => {
         const data = res.data.data;
         const stateData = data.filter(
@@ -37,7 +37,7 @@ const District = () => {
     };
 
     axios
-      .post("http://localhost:8000/adddistrict", userdata)
+      .post("/api/adddistrict", userdata)
       .then((res) => {
         console.log(res.data.data);
         navigate("/head/district");

@@ -5,6 +5,8 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import '../../Stylesadm/CollegeLoginForm.css';
 import OwlImage from '../../Images/owlHouse.svg';
+import api from "../../api";
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,8 +21,8 @@ const Login = () => {
     e.preventDefault();
     setServerError("");
 
-    axios.post(
-      "http://localhost:8000/loginauth",
+    api.post(
+      "/api/loginauth",
       { reg_college_username, reg_password },
       { headers: { "Content-Type": "application/json" } }
     )
@@ -39,7 +41,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:8000/getvisit")
+    api.get("/api/getvisit")
       .then((res) => {
         const data = res.data.userData;
         setVisitData(data);

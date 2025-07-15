@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState, } from "react";
 import { Button, Col, Form, Row, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import api from "../../api";
+
 
 const Update_university = () => {
   const [universityData, setUniversityData] = useState({});
@@ -18,8 +20,8 @@ const Update_university = () => {
       university_status,
     }
 
-    axios
-      .put(`http://localhost:8000/updateuniversity/${id}`, userdata)
+    api
+      .put(`/api/updateuniversity/${id}`, userdata)
       .then((res) => {
         alert("Univarsity Details Updated Successfully");
         navigate("/head/university");
@@ -31,8 +33,8 @@ const Update_university = () => {
   };
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/getoneuniversity/${id}`)
+    api
+      .get(`/api/getoneuniversity/${id}`)
       .then((res) => {
         setUniversityData(res.data);
         setUniversityname(res.data.university_name); // Set the initial value for university_name

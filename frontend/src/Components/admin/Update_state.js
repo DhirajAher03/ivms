@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Row, Container } from "react-bootstrap";
 // import { FaCaretDown } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import api from "../../api";
+
 const Update_state = () => {
   const [state_data, setStatedata] = useState("");
   const [state_name, setStatename] = useState("");
@@ -13,8 +15,8 @@ const Update_state = () => {
 
   //   get API for state
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/getonestate/${id}`)
+    api
+      .get(`/api/getonestate/${id}`)
       .then((res) => {
         setStatedata(res.data.data);
         setStatename(res.data.state_name);
@@ -37,8 +39,8 @@ const Update_state = () => {
       state_status,
     };
 
-    axios
-      .put(`http://localhost:8000/updatestate/${id}`, userdata)
+    api
+      .put(`/api/updatestate/${id}`, userdata)
       .then(() => {
         console.log("State updated successfully");
         navigate("/head/getstate");

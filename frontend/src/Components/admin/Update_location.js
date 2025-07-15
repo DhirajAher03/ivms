@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState, } from "react";
 import { Button, Col, Form, Row, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import api from "../../api";
+
 
 const Update_location = () => {
   const [locationData, setLocationData] = useState({});
@@ -20,8 +22,8 @@ const Update_location = () => {
       location_status
     }
 
-    axios
-      .put(`http://localhost:8000/updatelocation/${id}`, userdata)
+    api
+      .put(`/api/updatelocation/${id}`, userdata)
       .then((res) => {
         alert("Location Details Updated Successfully");
         navigate("/head/location");
@@ -33,8 +35,8 @@ const Update_location = () => {
   };
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/getonelocation/${id}`)
+    api
+      .get(`/api/getonelocation/${id}`)
       .then((res) => {
         setLocationData(res.data);
         setLocationcity(res.data.location_city); // Set the initial value for university_name

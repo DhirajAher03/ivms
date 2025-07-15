@@ -8,14 +8,14 @@ import { Table, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
-
+import api from "../../api";
 
 const GetAgenda = () => {
   const [agendaData, setAgendaData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/get_agenda")
+    api
+      .get("/api/get_agenda")
       .then((res) => {
         setAgendaData(res.data.data);
       })
@@ -28,7 +28,7 @@ const GetAgenda = () => {
     const confirmDelete = window.confirm("Are you sure you want to delete this agenda?");
     if (confirmDelete) {
       axios
-        .delete(`http://localhost:8000/delete_agenda/${id}`)
+        .delete(`/api/delete_agenda/${id}`)
         .then((res) => {
           alert("Agenda Deleted Successfully");
           // Optionally, refresh the data here by fetching again

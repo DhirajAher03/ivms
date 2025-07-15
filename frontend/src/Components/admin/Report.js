@@ -18,7 +18,7 @@ const Report = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/getvisit")
+      .get("/api/getvisit")
       .then((res) => {
         const data = res.data.userData;
         setVisitData(data);

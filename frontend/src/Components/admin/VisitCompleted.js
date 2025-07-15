@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import api from "../../api";
+
 
 const VisitCompleted = () => {
   const [visitData, setVisitData] = useState([]);
@@ -22,8 +24,8 @@ const VisitCompleted = () => {
 
   // Fetch visit data
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/getvisit")
+    api
+      .get("/api/getvisit")
       .then((res) => {
         const data = res.data.userData;
         setVisitData(data);
@@ -71,8 +73,8 @@ const VisitCompleted = () => {
 
     const userdata = { college_name, Date_of_visit, Visit_status };
 
-    axios
-      .put(`http://localhost:8000/updatevisit/${id}`, userdata)
+    api
+      .put(`/api/updatevisit/${id}`, userdata)
       .then(() => {
         alert("Visit status updated successfully.");
         handleClear();

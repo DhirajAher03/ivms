@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import '../../Stylesadm/CollegeLoginForm.css'; // Ensure this path is correct
 import OwlImage from '../../Images/owlHouse.svg';
+import api from "../../api";
+
 
 const AdminLogin = () => {
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ const AdminLogin = () => {
     setServerError("");
     setLoading(true);
 
-    axios.post("http://localhost:8000/adminlogin",
+    api.post("/api/admin_login/adminlogin",
       { username, password },
       { headers: { "Content-Type": "application/json" } }
     )

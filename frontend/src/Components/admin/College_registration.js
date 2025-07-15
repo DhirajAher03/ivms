@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+import api from "../../api";
 // import { useNavigate } from "react-router-dom";
 
 const College_registration = () => {
@@ -130,14 +131,14 @@ const College_registration = () => {
       reg_college_username,
       reg_password,
       reg_confirm_password,
-      
+
       reg_mou_sign,
       reg_status,
     };
 
     try {
       axios
-        .post("http://localhost:8000/add_registration", userdata)
+        .post("/api/add_registration", userdata)
         .then((res) => {
           // navigate('/Dashboard');
           console.log("hiiiiiiii", res.data.data);
@@ -172,7 +173,7 @@ const College_registration = () => {
   // Get State
   useEffect(() => {
     axios
-      .get("http://localhost:8000/getstate")
+      .get("/api/getstate")
       .then((res) => {
         const data = res.data.data;
         const activestate = data.filter(
@@ -187,7 +188,7 @@ const College_registration = () => {
   // Get District
   useEffect(() => {
     axios
-      .get("http://localhost:8000/getdistrict")
+      .get("/api/getdistrict")
       .then((res) => {
         const data = res.data.data;
         const activedistrict = data.filter(
@@ -218,7 +219,7 @@ const College_registration = () => {
   // Get City
   useEffect(() => {
     axios
-      .get("http://localhost:8000/getcity")
+      .get("/api/getcity")
       .then((res) => {
         const data = res.data.data;
         const activecity = data.filter(
@@ -249,7 +250,7 @@ const College_registration = () => {
   //   Get University
   useEffect(() => {
     axios
-      .get("http://localhost:8000/getuniversity")
+      .get("/api/getuniversity")
       .then((res) => {
         const data = res.data.data;
         const activeuniversity = data.filter(
@@ -263,280 +264,280 @@ const College_registration = () => {
       });
   }, []);
 
- return (
-  <div className="bg-light py-3">
-    <Container>
-      <Row className="justify-content-center">
-        <Col lg={12} md={12} sm={12}>
-          <div className="shadow p-4 rounded-5 bg-white border ">
-            <h3 className="text-center mb-4 "style={{color:"rgb(24 41 114)"}}>🏫 College Registration</h3>
-            <Form onSubmit={handleSubmit}>
-              <Row className="mb-3">
-                <Col md={6}>
-                  <Form.Group controlId="collageName">
-                    <Form.Label>College Name</Form.Label>
-                    <Form.Control
-                      className="rounded-5"
-                      type="text"
-                      value={collage_name}
-                      onChange={(e) => setCollage_name(e.target.value)}
-                      isInvalid={!!errors.collage_name}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.collage_name}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group controlId="state">
-                    <Form.Label>State</Form.Label>
-                    <Form.Select
-                    className="rounded-5"
-                      value={reg_state}
-                      onChange={(e) => setReg_state(e.target.value)}
-                      isInvalid={!!errors.reg_state}
-                    >
-                      <option value="">Select State</option>
-                      {state.map((s) => (
-                        <option key={s._id} value={s.state_name}>
-                          {s.state_name}
-                        </option>
-                      ))}
-                    </Form.Select>
-                    <Form.Control.Feedback type="invalid">
-                      {errors.reg_state}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-              </Row>
+  return (
+    <div className="bg-light py-3">
+      <Container>
+        <Row className="justify-content-center">
+          <Col lg={12} md={12} sm={12}>
+            <div className="shadow p-4 rounded-5 bg-white border ">
+              <h3 className="text-center mb-4 " style={{ color: "rgb(24 41 114)" }}>🏫 College Registration</h3>
+              <Form onSubmit={handleSubmit}>
+                <Row className="mb-3">
+                  <Col md={6}>
+                    <Form.Group controlId="collageName">
+                      <Form.Label>College Name</Form.Label>
+                      <Form.Control
+                        className="rounded-5"
+                        type="text"
+                        value={collage_name}
+                        onChange={(e) => setCollage_name(e.target.value)}
+                        isInvalid={!!errors.collage_name}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.collage_name}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                  <Col md={6}>
+                    <Form.Group controlId="state">
+                      <Form.Label>State</Form.Label>
+                      <Form.Select
+                        className="rounded-5"
+                        value={reg_state}
+                        onChange={(e) => setReg_state(e.target.value)}
+                        isInvalid={!!errors.reg_state}
+                      >
+                        <option value="">Select State</option>
+                        {state.map((s) => (
+                          <option key={s._id} value={s.state_name}>
+                            {s.state_name}
+                          </option>
+                        ))}
+                      </Form.Select>
+                      <Form.Control.Feedback type="invalid">
+                        {errors.reg_state}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                </Row>
 
-              <Row className="mb-3">
-                <Col md={6}>
-                  <Form.Group controlId="district">
-                    <Form.Label>District</Form.Label>
-                    <Form.Select
-                    className="rounded-5"
-                      value={reg_district}
-                      onChange={(e) => setReg_district(e.target.value)}
-                      isInvalid={!!errors.reg_district}
-                    >
-                      <option value="">Select District</option>
-                      {filteredDistricts.map((d) => (
-                        <option key={d._id} value={d.district_name}>
-                          {d.district_name}
-                        </option>
-                      ))}
-                    </Form.Select>
-                    <Form.Control.Feedback type="invalid">
-                      {errors.reg_district}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group controlId="city">
-                    <Form.Label>City</Form.Label>
-                    <Form.Select
-                    className="rounded-5"
-                      value={reg_city}
-                      onChange={(e) => setReg_city(e.target.value)}
-                      isInvalid={!!errors.reg_city}
-                    >
-                      <option value="">Select City</option>
-                      {filteredCity.map((c) => (
-                        <option key={c._id} value={c.city_name}>
-                          {c.city_name}
-                        </option>
-                      ))}
-                    </Form.Select>
-                    <Form.Control.Feedback type="invalid">
-                      {errors.reg_city}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-              </Row>
+                <Row className="mb-3">
+                  <Col md={6}>
+                    <Form.Group controlId="district">
+                      <Form.Label>District</Form.Label>
+                      <Form.Select
+                        className="rounded-5"
+                        value={reg_district}
+                        onChange={(e) => setReg_district(e.target.value)}
+                        isInvalid={!!errors.reg_district}
+                      >
+                        <option value="">Select District</option>
+                        {filteredDistricts.map((d) => (
+                          <option key={d._id} value={d.district_name}>
+                            {d.district_name}
+                          </option>
+                        ))}
+                      </Form.Select>
+                      <Form.Control.Feedback type="invalid">
+                        {errors.reg_district}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                  <Col md={6}>
+                    <Form.Group controlId="city">
+                      <Form.Label>City</Form.Label>
+                      <Form.Select
+                        className="rounded-5"
+                        value={reg_city}
+                        onChange={(e) => setReg_city(e.target.value)}
+                        isInvalid={!!errors.reg_city}
+                      >
+                        <option value="">Select City</option>
+                        {filteredCity.map((c) => (
+                          <option key={c._id} value={c.city_name}>
+                            {c.city_name}
+                          </option>
+                        ))}
+                      </Form.Select>
+                      <Form.Control.Feedback type="invalid">
+                        {errors.reg_city}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                </Row>
 
-              <Row className="mb-3">
-                <Col md={6}>
-                  <Form.Group controlId="university">
-                    <Form.Label>University Name</Form.Label>
-                    <Form.Select
-                    className="rounded-5"
-                      value={reg_university_name}
-                      onChange={(e) => setReg_university_name(e.target.value)}
-                      isInvalid={!!errors.reg_university_name}
-                    >
-                      <option value="">Select University</option>
-                      {university.map((u) => (
-                        <option key={u._id} value={u.university_name}>
-                          {u.university_name}
-                        </option>
-                      ))}
-                    </Form.Select>
-                    <Form.Control.Feedback type="invalid">
-                      {errors.reg_university_name}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group controlId="principalName">
-                    <Form.Label>Principal Name</Form.Label>
-                    <Form.Control
-                    className="rounded-5"
-                      type="text"
-                      value={reg_principal_name}
-                      onChange={(e) => setReg_principal_name(e.target.value)}
-                      isInvalid={!!errors.reg_principal_name}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.reg_principal_name}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-              </Row>
+                <Row className="mb-3">
+                  <Col md={6}>
+                    <Form.Group controlId="university">
+                      <Form.Label>University Name</Form.Label>
+                      <Form.Select
+                        className="rounded-5"
+                        value={reg_university_name}
+                        onChange={(e) => setReg_university_name(e.target.value)}
+                        isInvalid={!!errors.reg_university_name}
+                      >
+                        <option value="">Select University</option>
+                        {university.map((u) => (
+                          <option key={u._id} value={u.university_name}>
+                            {u.university_name}
+                          </option>
+                        ))}
+                      </Form.Select>
+                      <Form.Control.Feedback type="invalid">
+                        {errors.reg_university_name}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                  <Col md={6}>
+                    <Form.Group controlId="principalName">
+                      <Form.Label>Principal Name</Form.Label>
+                      <Form.Control
+                        className="rounded-5"
+                        type="text"
+                        value={reg_principal_name}
+                        onChange={(e) => setReg_principal_name(e.target.value)}
+                        isInvalid={!!errors.reg_principal_name}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.reg_principal_name}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                </Row>
 
-              <Row className="mb-3">
-                <Col md={6}>
-                  <Form.Group controlId="contactPerson">
-                    <Form.Label>Contact Person</Form.Label>
-                    <Form.Control
-                    className="rounded-5"
-                      type="text"
-                      value={reg_contact_person}
-                      onChange={(e) => setReg_contact_person(e.target.value)}
-                      isInvalid={!!errors.reg_contact_person}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.reg_contact_person}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group controlId="contact1">
-                    <Form.Label>Contact No. 1</Form.Label>
-                    <Form.Control
-                    className="rounded-5"
-                      type="text"
-                      value={reg_contact_person_contact1}
-                      onChange={(e) => setReg_contact_person_contact1(e.target.value)}
-                      isInvalid={!!errors.reg_contact_person_contact1}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.reg_contact_person_contact1}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-              </Row>
+                <Row className="mb-3">
+                  <Col md={6}>
+                    <Form.Group controlId="contactPerson">
+                      <Form.Label>Contact Person</Form.Label>
+                      <Form.Control
+                        className="rounded-5"
+                        type="text"
+                        value={reg_contact_person}
+                        onChange={(e) => setReg_contact_person(e.target.value)}
+                        isInvalid={!!errors.reg_contact_person}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.reg_contact_person}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                  <Col md={6}>
+                    <Form.Group controlId="contact1">
+                      <Form.Label>Contact No. 1</Form.Label>
+                      <Form.Control
+                        className="rounded-5"
+                        type="text"
+                        value={reg_contact_person_contact1}
+                        onChange={(e) => setReg_contact_person_contact1(e.target.value)}
+                        isInvalid={!!errors.reg_contact_person_contact1}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.reg_contact_person_contact1}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                </Row>
 
-              <Row className="mb-3">
-                <Col md={6}>
-                  <Form.Group controlId="contact2">
-                    <Form.Label>Contact No. 2</Form.Label>
-                    <Form.Control
-                    className="rounded-5"
-                      type="text"
-                      value={reg_contact_person_contact2}
-                      onChange={(e) => setReg_contact_person_contact2(e.target.value)}
-                    />
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group controlId="email">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control
-                    className="rounded-5"
-                      type="email"
-                      value={reg_college_email_id}
-                      onChange={(e) => setReg_college_email_id(e.target.value)}
-                      isInvalid={!!errors.reg_college_email_id}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.reg_college_email_id}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-              </Row>
+                <Row className="mb-3">
+                  <Col md={6}>
+                    <Form.Group controlId="contact2">
+                      <Form.Label>Contact No. 2</Form.Label>
+                      <Form.Control
+                        className="rounded-5"
+                        type="text"
+                        value={reg_contact_person_contact2}
+                        onChange={(e) => setReg_contact_person_contact2(e.target.value)}
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col md={6}>
+                    <Form.Group controlId="email">
+                      <Form.Label>Email</Form.Label>
+                      <Form.Control
+                        className="rounded-5"
+                        type="email"
+                        value={reg_college_email_id}
+                        onChange={(e) => setReg_college_email_id(e.target.value)}
+                        isInvalid={!!errors.reg_college_email_id}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.reg_college_email_id}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                </Row>
 
-              <Row className="mb-3">
-                <Col md={6}>
-                  <Form.Group controlId="username">
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control
-                    className="rounded-5"
-                      type="text"
-                      value={reg_college_username}
-                      onChange={(e) => setReg_college_username(e.target.value)}
-                      isInvalid={!!errors.reg_college_username}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.reg_college_username}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group controlId="password">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                    className="rounded-5"
-                      type="password"
-                      value={reg_password}
-                      onChange={(e) => setReg_password(e.target.value)}
-                      isInvalid={!!errors.reg_password}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.reg_password}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-              </Row>
+                <Row className="mb-3">
+                  <Col md={6}>
+                    <Form.Group controlId="username">
+                      <Form.Label>Username</Form.Label>
+                      <Form.Control
+                        className="rounded-5"
+                        type="text"
+                        value={reg_college_username}
+                        onChange={(e) => setReg_college_username(e.target.value)}
+                        isInvalid={!!errors.reg_college_username}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.reg_college_username}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                  <Col md={6}>
+                    <Form.Group controlId="password">
+                      <Form.Label>Password</Form.Label>
+                      <Form.Control
+                        className="rounded-5"
+                        type="password"
+                        value={reg_password}
+                        onChange={(e) => setReg_password(e.target.value)}
+                        isInvalid={!!errors.reg_password}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.reg_password}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                </Row>
 
-              <Row className="mb-3">
-                <Col md={6}>
-                  <Form.Group controlId="confirmPassword">
-                    <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control
-                    className="rounded-5"
-                      type="password"
-                      value={reg_confirm_password}
-                      onChange={(e) => setReg_confirm_password(e.target.value)}
-                    />
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group controlId="mouSign">
-                    <Form.Label>MoU Signed?</Form.Label>
-                    <Form.Select
-                    className="rounded-5"
-                      value={reg_mou_sign}
-                      onChange={(e) => setReg_mou_sign(e.target.value)}
-                      isInvalid={!!errors.reg_mou_sign}
-                    >
-                      <option value="">Select</option>
-                      <option value="Yes">Yes</option>
-                      <option value="No">No</option>
-                    </Form.Select>
-                    <Form.Control.Feedback type="invalid">
-                      {errors.reg_mou_sign}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-              </Row>
+                <Row className="mb-3">
+                  <Col md={6}>
+                    <Form.Group controlId="confirmPassword">
+                      <Form.Label>Confirm Password</Form.Label>
+                      <Form.Control
+                        className="rounded-5"
+                        type="password"
+                        value={reg_confirm_password}
+                        onChange={(e) => setReg_confirm_password(e.target.value)}
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col md={6}>
+                    <Form.Group controlId="mouSign">
+                      <Form.Label>MoU Signed?</Form.Label>
+                      <Form.Select
+                        className="rounded-5"
+                        value={reg_mou_sign}
+                        onChange={(e) => setReg_mou_sign(e.target.value)}
+                        isInvalid={!!errors.reg_mou_sign}
+                      >
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                      </Form.Select>
+                      <Form.Control.Feedback type="invalid">
+                        {errors.reg_mou_sign}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                </Row>
 
-              <div className="d-flex justify-content-end gap-3 mt-4">
-                <Button variant="secondary" className="rounded-5" onClick={handleClear}>
-                  Clear
-                </Button>
-                <Button variant="primary" type="submit" className="rounded-5"
-                >
-                  Submit
-                </Button>
-              </div>
-            </Form>
-          </div>
-        </Col>
-      </Row>
-    </Container>
-  </div>
-);
+                <div className="d-flex justify-content-end gap-3 mt-4">
+                  <Button variant="secondary" className="rounded-5" onClick={handleClear}>
+                    Clear
+                  </Button>
+                  <Button variant="primary" type="submit" className="rounded-5"
+                  >
+                    Submit
+                  </Button>
+                </div>
+              </Form>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
 
 };
 

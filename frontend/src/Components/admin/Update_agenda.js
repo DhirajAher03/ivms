@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState, } from "react";
 import { Button, Col, Form, Row, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import api from "../../api";
 
 const Update_agenda = () => {
   const [agendaData, setagendaData] = useState({});
@@ -23,8 +24,8 @@ const Update_agenda = () => {
       agenda_status
     }
 
-    axios
-      .put(`http://localhost:8000/update_agenda/${id}`, userdata)
+    api
+      .put(`/api/update_agenda/${id}`, userdata)
       .then((res) => {
         alert("agenda Details Updated Successfully");
         navigate("/head/getagenda")
@@ -36,8 +37,8 @@ const Update_agenda = () => {
   };
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/get_agenda_one/${id}`)
+    api
+      .get(`/api/get_agenda_one/${id}`)
       .then((res) => {
         console.log("API Response:", res.data);
         // setagendaData(res.data);

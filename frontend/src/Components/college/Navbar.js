@@ -15,6 +15,8 @@ import axios from "axios";
 import Navlogo from "../../Images/IVMSLOGO.png";
 import "../../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import api from "../../api";
+
 
 const ColHeader = () => {
   const location = useLocation(); // Get the current path
@@ -23,8 +25,8 @@ const ColHeader = () => {
   const collegename = localStorage.getItem("CollegeName");
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/getvisit")
+    api
+      .get("/api/getvisit")
       .then((response) => {
         const today = new Date().toISOString().split("T")[0];
         const filteredData = response.data.userData.filter(
@@ -60,7 +62,7 @@ const ColHeader = () => {
           className="me-3"
           style={{ width: "130px", height: "80px" }}
         />
-       
+
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
@@ -69,51 +71,45 @@ const ColHeader = () => {
           {/* Links */}
           <Nav.Link
             href="/home"
-            className={`fs-5 me-2 nav-link-hover ${
-              location.pathname === "/home" ? "text-info fw-bold" : "text-black"
-            }`}
+            className={`fs-5 me-2 nav-link-hover ${location.pathname === "/home" ? "text-info fw-bold" : "text-black"
+              }`}
           >
             Home
           </Nav.Link>
           <Nav.Link
             href="/collegetotalvisit"
-            className={`fs-5 me-2 nav-link-hover ${
-              location.pathname === "/collegetotalvisit" ? "text-info fw-bold" : "text-black"
-            }`}
+            className={`fs-5 me-2 nav-link-hover ${location.pathname === "/collegetotalvisit" ? "text-info fw-bold" : "text-black"
+              }`}
           >
             Schedule Visit
           </Nav.Link>
           <Nav.Link
             href="/feedback"
-            className={`fs-5 me-2 nav-link-hover ${
-              location.pathname === "/feedback" ? "text-info fw-bold" : "text-black"
-            }`}
+            className={`fs-5 me-2 nav-link-hover ${location.pathname === "/feedback" ? "text-info fw-bold" : "text-black"
+              }`}
           >
             Feedback
           </Nav.Link>
           <Nav.Link
             href="/gallery"
-            className={`fs-5 me-2 nav-link-hover ${
-              location.pathname === "/gallery" ? "text-info fw-bold" : "text-black"
-            }`}
+            className={`fs-5 me-2 nav-link-hover ${location.pathname === "/gallery" ? "text-info fw-bold" : "text-black"
+              }`}
           >
             Gallery
           </Nav.Link>
           <Nav.Link
             href="/agenda"
-            className={`fs-5 me-2 nav-link-hover ${
-              location.pathname === "/agenda" ? "text-info fw-bold" : "text-black"
-            }`}
+            className={`fs-5 me-2 nav-link-hover ${location.pathname === "/agenda" ? "text-info fw-bold" : "text-black"
+              }`}
           >
             Agenda
           </Nav.Link>
           <Nav.Link
             href="/pendingfees"
-            className={`fs-5 me-2 nav-link-hover ${
-              location.pathname === "/pendingfees"
+            className={`fs-5 me-2 nav-link-hover ${location.pathname === "/pendingfees"
                 ? "text-info fw-bold"
                 : "text-black"
-            }`}
+              }`}
           >
             Pending Fees
           </Nav.Link>
@@ -143,9 +139,9 @@ const ColHeader = () => {
               id="profile-dropdown"
               className="text-black p-0 border-0"
             >
-              <FaRegUser size={30} className="me-1 text-black nav-link-hover"/>
+              <FaRegUser size={30} className="me-1 text-black nav-link-hover" />
             </Dropdown.Toggle>
-            <Dropdown.Menu style={{background:"rgba(25,25,25,0.8)"}} >
+            <Dropdown.Menu style={{ background: "rgba(25,25,25,0.8)" }} >
               <Dropdown.Item href="/profile" className="nav-link-hover text-white">View Profile</Dropdown.Item>
               <Dropdown.Item href="/update_profile" className="nav-link-hover text-white">Update Profile</Dropdown.Item>
             </Dropdown.Menu>

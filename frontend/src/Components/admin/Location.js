@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Col, Form, Row, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import api from "../../api";
+
 
 const Location = () => {
   const [location_city, setLocationcity] = useState("");
@@ -18,7 +20,7 @@ const Location = () => {
       location_status
     }
 
-    axios.post("http://localhost:8000/addlocation", userdata)
+    api.post("/api/addlocation", userdata)
       .then((res) => {
         console.log(res.data.data);
         navigate("/head/location")

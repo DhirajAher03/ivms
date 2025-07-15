@@ -4,6 +4,8 @@ import axios from "axios";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
 import ColHeader from "./Navbar";
+import api from "../../api";
+
 
 const Gallery = () => {
   const [galleryData, setGalleryData] = useState([]);
@@ -20,8 +22,8 @@ const Gallery = () => {
   };
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/getgallery")
+    api
+      .get("/api/getgallery")
       .then((res) => {
         const data = res.data.userData;
 
@@ -53,8 +55,8 @@ const Gallery = () => {
     const imageFolder = zip.folder("Gallery_Images");
 
     const imagePromises = allImages.map((image) =>
-      axios
-        .get(`http://localhost:8000/images/${image}`, { responseType: "blob" })
+      api
+        .get(`/api/images/${image}`, { responseType: "blob" })
         .then((response) => {
           imageFolder.file(image, response.data);
         })
@@ -71,11 +73,11 @@ const Gallery = () => {
       <ColHeader />
       <Container
         fluid
-        style={{  paddingTop: "15vh",paddingLeft: "50px", paddingRight: "50px" }}
+        style={{ paddingTop: "15vh", paddingLeft: "50px", paddingRight: "50px" }}
       >
-       <h2 className="text-center mb-4 fw-bold" style={{ color: "rgb(7, 10, 92)" }}>
-            GALLERY
-       </h2>
+        <h2 className="text-center mb-4 fw-bold" style={{ color: "rgb(7, 10, 92)" }}>
+          GALLERY
+        </h2>
 
 
         {/* Filter Row */}
@@ -137,14 +139,14 @@ const Gallery = () => {
               <Col key={index} xs={12} sm={6} md={4} className="mb-4">
                 <Card className="h-100 shadow-sm border-0">
                   <a
-                    href={`http://localhost:8000/images/${image}`}
+                    href={`/api/images/${image}`}
                     download={`Gallery_Item_${index + 1}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <Card.Img
                       variant="top"
-                      src={`http://localhost:8000/images/${image}`}
+                      src={`/api/images/${image}`}
                       alt={`Gallery Item ${index + 1}`}
                       style={{ height: "400px", objectFit: "cover" }}
                       className="rounded-4"

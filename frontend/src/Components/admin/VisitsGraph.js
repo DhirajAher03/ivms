@@ -13,6 +13,8 @@ import {
 } from "chart.js";
 import { Card, Col, Row } from "react-bootstrap";
 import "../../App.css";
+import api from "../../api";
+
 
 ChartJS.register(
   CategoryScale,
@@ -34,7 +36,7 @@ const VisitsGraph = () => {
   });
 
   useEffect(() => {
-    axios.get("http://localhost:8000/getvisit")
+    api.get("/api/getvisit")
       .then((response) => {
         const visitsArray = response.data.userData || [];
         const lastFiveVisits = visitsArray.slice(-5);
@@ -122,7 +124,7 @@ const VisitsGraph = () => {
     },
   };
 
-   
+
   const pieData = {
     labels: ["Upcoming", "Ongoing", "Completed", "Cancelled"],
     datasets: [
@@ -158,14 +160,14 @@ const VisitsGraph = () => {
 
       {/* Pie Chart */}
       {/* Updated Pie Chart */}
-<Col md={6}>
-  <Card className="reportCard border-0 shadow rounded-4" style={{ backgroundColor: "white" }}>
-    <Card.Body>
-      <Card.Title>Visit Status</Card.Title>
-      <Pie data={pieData} height={200} />
-    </Card.Body>
-  </Card>
-</Col>
+      <Col md={6}>
+        <Card className="reportCard border-0 shadow rounded-4" style={{ backgroundColor: "white" }}>
+          <Card.Body>
+            <Card.Title>Visit Status</Card.Title>
+            <Pie data={pieData} height={200} />
+          </Card.Body>
+        </Card>
+      </Col>
 
     </Row>
   );

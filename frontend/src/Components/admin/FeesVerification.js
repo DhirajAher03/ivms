@@ -10,6 +10,7 @@ import {
   Pagination,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import api from "../../api";
 
 const FeesVerification = () => {
   const [visitData, setVisitData] = useState([]);
@@ -21,8 +22,8 @@ const FeesVerification = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/getvisit")
+    api
+      .get("/api/getvisit")
       .then((response) => {
         const filteredData =
           response.data?.userData?.filter(
@@ -44,7 +45,7 @@ const FeesVerification = () => {
     const userdata = { fees_received: feesReceived };
 
     axios
-      .put(`http://localhost:8000/updatevisit/${id}`, userdata)
+      .put(`/api/updatevisit/${id}`, userdata)
       .then(() => {
         alert("Fee status updated successfully!");
         navigate("/head/ivrequest");

@@ -5,6 +5,8 @@ import { Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import { FaCheckCircle, FaTimesCircle, FaClock } from "react-icons/fa";
+import api from "../../api";
+
 
 const Notification = () => {
   const [visitData, setVisitData] = useState([]);
@@ -12,8 +14,8 @@ const Notification = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/getvisit")
+    api
+      .get("/api/getvisit")
       .then((response) => {
         const today = new Date().toISOString().split("T")[0];
         const filteredData = response.data.userData.filter(
@@ -33,7 +35,7 @@ const Notification = () => {
   const handleSeen = (id) => {
     const fetchData = { notification_status: "seen" };
     axios
-      .put(`http://localhost:8000/updatevisit/${id}`, fetchData)
+      .put(`/api/updatevisit/${id}`, fetchData)
       .then(() => {
         setVisitData((prevState) =>
           prevState.map((visit) =>
@@ -91,8 +93,8 @@ const Notification = () => {
                     visit.Visit_accept === "accept"
                       ? "#198754"
                       : visit.Visit_accept === "reject"
-                      ? "#dc3545"
-                      : "#ffc107",
+                        ? "#dc3545"
+                        : "#ffc107",
                 }}
               >
                 <div className="d-flex align-items-start">

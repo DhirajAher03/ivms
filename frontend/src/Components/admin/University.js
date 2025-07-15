@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Col, Form, Row, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import api from "../../api";
 
 const University = () => {
   const [university_name, setUniversityname] = useState("");
@@ -16,7 +17,7 @@ const University = () => {
       university_status,
     }
 
-    axios.post("http://localhost:8000/adduniversity", userdata)
+    api.post("/api/adduniversity", userdata)
       .then((res) => {
         navigate("/head/university")
         console.log(res.data.data);
