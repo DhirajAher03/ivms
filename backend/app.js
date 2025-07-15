@@ -50,7 +50,7 @@ app.use('/', agenda_route);
 app.use('/', fees_route);
 app.use('/', feedback_route);
 app.use("/", visit_route);
-app.use("/", admin_route);
+app.use("/api/admin_login", admin_route);
 app.use("/", gallery_route);
 app.use("/", moudfeeroute);
 app.use("/", payment_route); // ✅ ADD THIS LINE
