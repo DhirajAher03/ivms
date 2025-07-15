@@ -22,8 +22,10 @@ const gallery_route = require("./Gallery/galllery_route");
 const moudfeeroute = require("./Moufee/moufee_route");
 
 // CORS
-app.use(cors());
-
+app.use(cors({
+  origin: "http://localhost:3000",  // ✅ frontend origin
+  credentials: true                 // ✅ if sending cookies/token headers
+}));
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
   serverSelectionTimeoutMS: 50000,
