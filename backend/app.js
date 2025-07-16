@@ -39,21 +39,21 @@ app.use(express.json());
 // Serve uploaded images
 app.use('/images', express.static('Images'));
 
-// Routes
-app.use('/', locationroute);
-app.use('/', universityroute);
-app.use('/', stateroute);
-app.use('/', districtroute);
-app.use('/', cityroute);
-app.use('/', registration_route);
-app.use('/', agenda_route);
-app.use('/', fees_route);
-app.use('/', feedback_route);
-app.use("/", visit_route);
-app.use("/api/admin_login", admin_route);
-app.use("/", gallery_route);
-app.use("/", moudfeeroute);
-app.use("/", payment_route); // ✅ ADD THIS LINE
+app.use('/api/location', locationroute);
+app.use('/api/university', universityroute);
+app.use('/api/state', stateroute);
+app.use('/api/district', districtroute);
+app.use('/api/city', cityroute);
+app.use('/api/registration', registration_route);
+app.use('/api/agenda', agenda_route);
+app.use('/api/fees', fees_route);
+app.use('/api/feedback', feedback_route);
+app.use("/api/visit", visit_route);
+app.use("/api/admin", admin_route);
+app.use("/api/gallery", gallery_route);
+app.use("/api/moufee", moudfeeroute);
+app.use("/api/payment", payment_route);
+
 
 // Default route
 app.get('/', (req, res) => {
