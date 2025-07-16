@@ -20,7 +20,7 @@ const Location = () => {
       location_status
     }
 
-    api.post("/api/addlocation", userdata)
+    api.post("/api/location/addlocation", userdata)
       .then((res) => {
         console.log(res.data.data);
         navigate("/head/location")

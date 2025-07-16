@@ -17,7 +17,7 @@ const TotalVisit = () => {
   const visitsPerPage = 10; // Number of rows per page
 
   useEffect(() => {
-    api.get("/api/getvisit")
+    api.get("/api/visit/getvisit")
       .then((res) => {
         setCollegeData(res.data.userData);
         const data = res.data.userData;

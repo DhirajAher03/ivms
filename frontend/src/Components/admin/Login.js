@@ -22,7 +22,7 @@ const AdminLogin = () => {
     setServerError("");
     setLoading(true);
 
-    api.post("/api/admin_login/adminlogin",
+    api.post("/api/admin/adminlogin",
       { username, password },
       { headers: { "Content-Type": "application/json" } }
     )

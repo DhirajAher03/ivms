@@ -8,13 +8,14 @@ import { Table, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
+import api from "../../api"; // Adjust the import based on your project structure
 
 const GetCity = () => {
   const [CityData, setCityData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("/api/getcity")
+    api
+      .get("/api/city/getcity")
       .then((res) => {
         setCityData(res.data.data);
       })
@@ -26,8 +27,8 @@ const GetCity = () => {
   const deletedata = (id) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this city?");
     if (confirmDelete) {
-      axios
-        .delete(`/api/deletecity/${id}`)
+      api
+        .delete(`/api/city/deletecity/${id}`)
         .then((res) => {
           alert("City Deleted Successfully");
           // Optionally, refresh the data here by fetching again

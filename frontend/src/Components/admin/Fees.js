@@ -19,7 +19,7 @@ const Fees = () => {
       fees_status
     }
 
-    api.post("/api/add_fees", userdata)
+    api.post("/api/fees/add_fees", userdata)
       .then((res) => {
         console.log(res.data.data);
         navigate("/head/getfees")

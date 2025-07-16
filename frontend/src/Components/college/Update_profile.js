@@ -39,7 +39,7 @@ const UpdateProfile = () => {
   // Fetch user data
   useEffect(() => {
     api
-      .get(`/api/get_registration_one/${id}`)
+      .get(`/api/registration/get_registration_one/${id}`)
       .then((res) => {
         setProfileData(res.data.userData);
         console.log("data", res.data.userData)
@@ -53,16 +53,16 @@ const UpdateProfile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const statesResponse = await api.get("/api/getstate");
+        const statesResponse = await api.get("/api/state/getstate");
         setStates(statesResponse.data.data);
 
-        const districtsResponse = await api.get("/api/getdistrict");
+        const districtsResponse = await api.get("/api/district/getdistrict");
         setDistricts(districtsResponse.data.data);
 
-        const citiesResponse = await api.get("/api/getcity");
+        const citiesResponse = await api.get("/api/city/getcity");
         setCities(citiesResponse.data.data);
 
-        const universitiesResponse = await api.get("/api/getuniversity");
+        const universitiesResponse = await api.get("/api/university/getuniversity");
         setUniversities(universitiesResponse.data.data);
       } catch (error) {
         console.error("Error fetching dropdown data:", error);
@@ -82,7 +82,7 @@ const UpdateProfile = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     api
-      .put(`/api/update_registration/${id}`, profileData)
+      .put(`/api/registration/update_registration/${id}`, profileData)
       .then((res) => {
 
         alert("Profile updated successfully!");

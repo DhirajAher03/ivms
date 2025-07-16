@@ -16,7 +16,7 @@ const UpcomingVisits = () => {
 
   useEffect(() => {
     api
-      .get("/api/getvisit")
+      .get("/api/visit/getvisit")
       .then((res) => {
         const data = res.data.userData;
         setVisitData(data);

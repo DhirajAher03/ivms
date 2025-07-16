@@ -15,7 +15,7 @@ const CurrentMonthVisits = () => {
   const visitsPerPage = 10; // Number of rows per page
 
   useEffect(() => {
-    api.get("/api/getvisit")
+    api.get("/api/visit/getvisit")
       .then((res) => {
         const data = res.data.userData;
         setVisitData(data);

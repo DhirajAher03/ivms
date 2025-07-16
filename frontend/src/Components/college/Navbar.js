@@ -26,7 +26,7 @@ const ColHeader = () => {
 
   useEffect(() => {
     api
-      .get("/api/getvisit")
+      .get("/api/visit/getvisit")
       .then((response) => {
         const today = new Date().toISOString().split("T")[0];
         const filteredData = response.data.userData.filter(
@@ -107,8 +107,8 @@ const ColHeader = () => {
           <Nav.Link
             href="/pendingfees"
             className={`fs-5 me-2 nav-link-hover ${location.pathname === "/pendingfees"
-                ? "text-info fw-bold"
-                : "text-black"
+              ? "text-info fw-bold"
+              : "text-black"
               }`}
           >
             Pending Fees

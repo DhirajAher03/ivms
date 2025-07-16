@@ -14,8 +14,8 @@ const District = () => {
 
   //   get api
   useEffect(() => {
-    axios
-      .get("/api/getstate")
+    api
+      .get("/api/state/getstate")
       .then((res) => {
         const data = res.data.data;
         const stateData = data.filter(
@@ -36,8 +36,8 @@ const District = () => {
       district_status,
     };
 
-    axios
-      .post("/api/adddistrict", userdata)
+    api
+      .post("/api/district/adddistrict", userdata)
       .then((res) => {
         console.log(res.data.data);
         navigate("/head/district");

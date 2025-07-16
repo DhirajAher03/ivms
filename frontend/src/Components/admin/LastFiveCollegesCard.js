@@ -10,7 +10,7 @@ const CollegeTotalVisit = () => {
   const [colleges, setColleges] = useState([]);
 
   useEffect(() => {
-    api.get('/api/getvisit')
+    api.get('/api/visit/getvisit')
       .then(res => {
         const lastFive = res.data.userData.slice(-5).reverse();
         setColleges(lastFive);

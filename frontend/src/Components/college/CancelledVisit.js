@@ -15,7 +15,7 @@ const CancelledVisit = () => {
 
   useEffect(() => {
     axios
-      .get(`/api/getvisitone/${id}`)
+      .get(`/api/visit/getvisitone/${id}`)
       .then((res) => {
         setVisitData(res.data.data);
       })
@@ -42,7 +42,7 @@ const CancelledVisit = () => {
         visit_cancelled,
       };
       axios
-        .put(`/api/updatevisit/${cancelid}`, userdata)
+        .put(`/api/visit/updatevisit/${cancelid}`, userdata)
         .then((res) => {
           alert("Visit cancelled successfully");
           navigate("/collegetotalvisit")

@@ -11,7 +11,7 @@ const Notification = () => {
 
   useEffect(() => {
     axios
-      .get("/api/getvisit")
+      .get("/api/visit/getvisit")
       .then((res) => {
         const data = res.data.userData || [];
         const inactiveVisits = data.filter((visit) => visit.Visit_accept === "pending");
@@ -27,7 +27,7 @@ const Notification = () => {
 
   const handleSeen = (id) => {
     axios
-      .delete(`/api/deletevisit/${id}`)
+      .delete(`/api/visit/deletevisit/${id}`)
       .then(() => {
         setCancelledVisit((prev) => prev.filter((v) => v._id !== id));
       })

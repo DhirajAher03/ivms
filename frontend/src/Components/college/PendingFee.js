@@ -15,7 +15,7 @@ const PendingFee = () => {
 
   useEffect(() => {
     api
-      .get("/api/getvisit")
+      .get("/api/visit/getvisit")
       .then((response) => {
         const data = response.data.userData || [];
         const filtered = data.filter(
@@ -70,7 +70,7 @@ const PendingFee = () => {
     }
 
     try {
-      const { data: order } = await api.post("/api/create-order", {
+      const { data: order } = await api.post("/api/payment/create-order", {
         amount,
       });
 
@@ -84,7 +84,7 @@ const PendingFee = () => {
         handler: async function (response) {
           try {
             // ✅ Update payment status in backend
-            await api.put(`/api/updatevisit/${id}`, {
+            await api.put(`/api/visit/updatevisit/${id}`, {
               fees_status: "paid",
               transaction_id: response.razorpay_payment_id,
             });

@@ -20,7 +20,7 @@ const Profile = () => {
 
   useEffect(() => {
     api
-      .get(`/api/get_registration_one/${id}`)
+      .get(`/api/registration/get_registration_one/${id}`)
       .then((res) => {
         setProfileData(res.data.userData);
       })

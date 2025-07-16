@@ -18,7 +18,7 @@ const ForgetPasswordComponent = () => {
   // Fetch the list of emails from the database
   useEffect(() => {
     api
-      .get('/api/get_registration')
+      .get('/api/registration/get_registration')
       .then((res) => {
         setData(res.data.data);
       })
@@ -31,7 +31,7 @@ const ForgetPasswordComponent = () => {
     if (user) {
       try {
         // Send verification email
-        await api.post('/api/updateemail', {
+        await api.post('/api/registration/updateemail', {
           email: reg_college_email_id,
           link: `http://localhost:3000/forget?email=${encodeURIComponent(
             reg_college_email_id
@@ -70,7 +70,7 @@ const ForgetPasswordComponent = () => {
     }
 
     try {
-      await api.put(`/api/forget`, {
+      await api.put(`/api/registration/forget`, {
         reg_college_email_id,
         reg_password,
       });

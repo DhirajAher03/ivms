@@ -18,7 +18,7 @@ const State = () => {
       state_status,
     }
 
-    api.post("/api/addstate", userdata)
+    api.post("/api/state/addstate", userdata)
       .then((res) => {
         console.log(res.data.data);
         navigate("/head/getstate");

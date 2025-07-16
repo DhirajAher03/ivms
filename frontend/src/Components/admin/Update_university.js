@@ -21,7 +21,7 @@ const Update_university = () => {
     }
 
     api
-      .put(`/api/updateuniversity/${id}`, userdata)
+      .put(`/api/university/updateuniversity/${id}`, userdata)
       .then((res) => {
         alert("Univarsity Details Updated Successfully");
         navigate("/head/university");
@@ -34,7 +34,7 @@ const Update_university = () => {
 
   useEffect(() => {
     api
-      .get(`/api/getoneuniversity/${id}`)
+      .get(`/api/university/getoneuniversity/${id}`)
       .then((res) => {
         setUniversityData(res.data);
         setUniversityname(res.data.university_name); // Set the initial value for university_name

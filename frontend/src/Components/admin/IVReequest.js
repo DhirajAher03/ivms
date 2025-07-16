@@ -23,6 +23,8 @@ import {
   FaMinus,
 } from "react-icons/fa";
 
+import api from "../../api";
+
 const IVRequest = () => {
   const [visitData, setVisitData] = useState([]);
   const [collegeName, setCollegeName] = useState("");
@@ -56,8 +58,8 @@ const IVRequest = () => {
   };
 
   const fetchVisitData = () => {
-    axios
-      .get("/api/getvisit")
+    api
+      .get("/api/visit/getvisit")
       .then((res) => {
         const data = res.data.userData;
         const pending = data.filter(
@@ -128,8 +130,8 @@ const IVRequest = () => {
   };
 
   const handleUpdate = () => {
-    axios
-      .put(`/api/updatevisit/${id}`, {
+    api
+      .put(`/api/visit/updatevisit/${id}`, {
         college_name: collegeName,
         Visit_accept,
       })
@@ -141,8 +143,8 @@ const IVRequest = () => {
   };
 
   const handleReject = () => {
-    axios
-      .put(`/api/updatevisit/${id}`, {
+    api
+      .put(`/api/visit/updatevisit/${id}`, {
         college_name: collegeName,
         reason,
         Visit_accept,
@@ -162,8 +164,8 @@ const IVRequest = () => {
       return;
     }
 
-    axios
-      .put(`/api/updatevisit/${visitId}`, { fees: parsedFee })
+    api
+      .put(`/api/visit/updatevisit/${visitId}`, { fees: parsedFee })
       .then(() => {
         alert("✅ Fees updated successfully!");
         setEditFeeId(null);

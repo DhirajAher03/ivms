@@ -8,13 +8,14 @@ import { Table, Button, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
+import api from "../../api"; // Adjust the import based on your project structure
 
 const GetLocation = () => {
   const [locationData, setLocationData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("/api/getlocation")
+    api
+      .get("/api/location/getlocation")
       .then((res) => {
         setLocationData(res.data.data);
       })
@@ -26,8 +27,8 @@ const GetLocation = () => {
   const deletedata = (id) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this location?");
     if (confirmDelete) {
-      axios
-        .delete(`/api/deletelocation/${id}`)
+      api
+        .delete(`/api/location/deletelocation/${id}`)
         .then((res) => {
           alert("Location Deleted Successfully");
           // Optionally, refresh the data here by fetching again

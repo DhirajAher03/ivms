@@ -9,13 +9,14 @@ import { Link } from "react-router-dom";
 import GetCity from "./GetCity";
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
+import api from "../../api"; // Adjust the import based on your project structure
 
 const GetState = () => {
   const [StateData, setStateData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("/api/getstate")
+    api
+      .get("/api/state/getstate")
       .then((res) => {
         setStateData(res.data.data);
       })
@@ -27,8 +28,8 @@ const GetState = () => {
   const deletedata = (id) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this state?");
     if (confirmDelete) {
-      axios
-        .delete(`/api/deletestate/${id}`)
+      api
+        .delete(`/api/state/deletestate/${id}`)
         .then((res) => {
           alert("State Deleted Successfully");
           // Optionally, refresh the data here by fetching again

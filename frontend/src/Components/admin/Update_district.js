@@ -19,7 +19,7 @@ const Update_district = () => {
   // Fetch city data for updating
   useEffect(() => {
     api
-      .get(`/api/getonedistrict/${id}`)
+      .get(`/api/district/getonedistrict/${id}`)
       .then((response) => {
         console.log(response.data.data);
         setDistrictdata(response.data);
@@ -33,7 +33,7 @@ const Update_district = () => {
   //   get API for state
   useEffect(() => {
     api
-      .get("/api/getstate")
+      .get("/api/state/getstate")
       .then((res) => {
         const filtestate = res.data.data.filter((state) => state.state_status === "active")
         setStatedata(filtestate);
@@ -57,7 +57,7 @@ const Update_district = () => {
     };
 
     api
-      .put(`/api/updatedistrict/${id}`, userdata)
+      .put(`/api/district/updatedistrict/${id}`, userdata)
       .then(() => {
         console.log("City updated successfully");
         navigate("/head/district");

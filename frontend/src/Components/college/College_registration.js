@@ -141,7 +141,7 @@ const College_registration = () => {
 
     try {
       axios
-        .post("/api/add_registration", userdata)
+        .post("/api/registration/add_registration", userdata)
         .then((res) => {
           navigate('/')
           handleClear();
@@ -176,7 +176,7 @@ const College_registration = () => {
   // Get State
   useEffect(() => {
     axios
-      .get("/api/getstate")
+      .get("/api/state/getstate")
       .then((res) => {
         const data = res.data.data;
         const activestate = data.filter(
@@ -191,7 +191,7 @@ const College_registration = () => {
   // Get District
   useEffect(() => {
     axios
-      .get("/api/getdistrict")
+      .get("/api/district/getdistrict")
       .then((res) => {
         const data = res.data.data;
         const activedistrict = data.filter(
@@ -221,7 +221,7 @@ const College_registration = () => {
   // Get City
   useEffect(() => {
     axios
-      .get("/api/getcity")
+      .get("/api/city/getcity")
       .then((res) => {
         const data = res.data.data;
         const activecity = data.filter(
@@ -251,7 +251,7 @@ const College_registration = () => {
   //   Get University
   useEffect(() => {
     axios
-      .get("/api/getuniversity")
+      .get("/api/university/getuniversity")
       .then((res) => {
         const data = res.data.data;
         const activeuniversity = data.filter(

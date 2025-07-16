@@ -22,7 +22,7 @@ const Fees = () => {
 
     }
 
-api.post("/api/add_agenda", userdata)
+    api.post("/api/agenda/add_agenda", userdata)
       .then((res) => {
         console.log(res.data.data);
         navigate("/head/getagenda")

@@ -23,7 +23,7 @@ const Gallery = () => {
 
   useEffect(() => {
     api
-      .get("/api/getgallery")
+      .get("/api/gallery/getgallery")
       .then((res) => {
         const data = res.data.userData;
 

@@ -16,7 +16,7 @@ const Update_state = () => {
   //   get API for state
   useEffect(() => {
     api
-      .get(`/api/getonestate/${id}`)
+      .get(`/api/state/getonestate/${id}`)
       .then((res) => {
         setStatedata(res.data.data);
         setStatename(res.data.state_name);
@@ -40,7 +40,7 @@ const Update_state = () => {
     };
 
     api
-      .put(`/api/updatestate/${id}`, userdata)
+      .put(`/api/state/updatestate/${id}`, userdata)
       .then(() => {
         console.log("State updated successfully");
         navigate("/head/getstate");

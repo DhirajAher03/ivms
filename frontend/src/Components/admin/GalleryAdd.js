@@ -21,7 +21,7 @@ const GalleryAdd = () => {
 
   useEffect(() => {
     api
-      .get("/api/getvisit")
+      .get("/api/visit/getvisit")
       .then((res) => {
         const data = res.data.userData;
         setVisitData(data);
@@ -76,7 +76,7 @@ const GalleryAdd = () => {
     });
 
     axios
-      .post(`/api/addgallery`, formdata)
+      .post(`/api/gallery/addgallery`, formdata)
       .then(() => {
         handleClear();
         alert("Gallery added successfully!");

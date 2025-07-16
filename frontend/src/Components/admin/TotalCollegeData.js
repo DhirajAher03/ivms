@@ -14,7 +14,7 @@ const TotalCollege = () => {
   const visitsPerPage = 10; // Number of rows per page
 
   useEffect(() => {
-    api.get("/api/get_registration").then((res) => {
+    api.get("/api/registration/get_registration").then((res) => {
       setCollegeData(res.data.data);
     });
   }, []);

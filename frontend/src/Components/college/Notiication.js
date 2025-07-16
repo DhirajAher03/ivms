@@ -15,7 +15,7 @@ const Notification = () => {
 
   useEffect(() => {
     api
-      .get("/api/getvisit")
+      .get("/api/visit/getvisit")
       .then((response) => {
         const today = new Date().toISOString().split("T")[0];
         const filteredData = response.data.userData.filter(
@@ -35,7 +35,7 @@ const Notification = () => {
   const handleSeen = (id) => {
     const fetchData = { notification_status: "seen" };
     axios
-      .put(`/api/updatevisit/${id}`, fetchData)
+      .put(`/api/visit/updatevisit/${id}`, fetchData)
       .then(() => {
         setVisitData((prevState) =>
           prevState.map((visit) =>

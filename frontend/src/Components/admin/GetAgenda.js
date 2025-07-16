@@ -15,7 +15,7 @@ const GetAgenda = () => {
 
   useEffect(() => {
     api
-      .get("/api/get_agenda")
+      .get("/api/agenda/get_agenda")
       .then((res) => {
         setAgendaData(res.data.data);
       })

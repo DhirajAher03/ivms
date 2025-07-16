@@ -13,7 +13,7 @@ const PendingVisit = () => {
   // const [collegeData, setCollegeData] = useState([]);
 
   useEffect(() => {
-    api.get("/api/getvisit")
+    api.get("/api/visit/getvisit")
       .then((res) => {
         // setCollegeData(res.data.userData);
         const data = res.data.userData;

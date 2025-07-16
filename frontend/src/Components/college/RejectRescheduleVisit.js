@@ -30,7 +30,7 @@ const RejectResceduled = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    api.get(`/api/getvisitone/${rescheduleid}`)
+    api.get(`/api/visit/getvisitone/${rescheduleid}`)
       .then((res) => {
         setVisitData(res.data.data);
 
@@ -92,7 +92,7 @@ const RejectResceduled = () => {
 
     // Send the data to the backend
     api
-      .put(`/api/updatevisit/${rescheduleid}`, formData, {
+      .put(`/api/visit/updatevisit/${rescheduleid}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

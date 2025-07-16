@@ -22,7 +22,7 @@ const Update_fees = () => {
     }
 
     api
-      .put(`/api/update_fees/${id}`, userdata)
+      .put(`/api/fees/update_fees/${id}`, userdata)
       .then((res) => {
         alert("fees Details Updated Successfully");
         navigate("/head/getfees")
@@ -35,7 +35,7 @@ const Update_fees = () => {
 
   useEffect(() => {
     api
-      .get(`/api/get_fees_one/${id}`)
+      .get(`/api/fees/get_fees_one/${id}`)
       .then((res) => {
         setFeesData(res.data.data);
         const data = res.data.data;

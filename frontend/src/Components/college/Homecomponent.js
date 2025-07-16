@@ -62,7 +62,7 @@ const Homecomponent = () => {
   useEffect(() => {
     const fetchSlots = async () => {
       try {
-        const response = await api.get("/api/getvisit");
+        const response = await api.get("/api/visit/getvisit");
         const data = response.data.userData;
 
         const bookings = data.reduce((acc, visit) => {
@@ -88,7 +88,7 @@ const Homecomponent = () => {
   useEffect(() => {
     const fetchReports = async () => {
       try {
-        const response = await api.get("/api/getvisit");
+        const response = await api.get("/api/visit/getvisit");
         const data = response.data.userData.filter(
           (visit) => visit.college_name === collegename
         );

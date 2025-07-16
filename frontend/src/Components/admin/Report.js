@@ -5,6 +5,7 @@ import jsPDF from "jspdf"; // For exporting PDF
 import "jspdf-autotable";
 import * as XLSX from "xlsx"; // For exporting Excel
 import { Table, Button, Container, Row, Form, Pagination } from "react-bootstrap";
+import api from "../../api"; // Adjust the import based on your project structure
 
 const Report = () => {
   const [visitData, setVisitData] = useState([]);
@@ -17,8 +18,8 @@ const Report = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    axios
-      .get("/api/getvisit")
+    api
+      .get("/api/visit/getvisit")
       .then((res) => {
         const data = res.data.userData;
         setVisitData(data);

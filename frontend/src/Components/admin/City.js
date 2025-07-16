@@ -18,7 +18,7 @@ const City = () => {
   //   get API for state
   useEffect(() => {
     api
-      .get("/api/getstate")
+      .get("/api/state/getstate")
       .then((res) => {
         const data = res.data.data;
         const stateData = data.filter((state) => state.state_status === "active")
@@ -31,7 +31,7 @@ const City = () => {
   useEffect(() => {
     if (city_state) {
       axios
-        .get("/api/getdistrict")
+        .get("/api/district/getdistrict")
         .then((res) => {
           const filteredDistricts = res.data.data.filter(
             (district) => district.district_state === city_state && district.district_status === "active"
@@ -54,7 +54,7 @@ const City = () => {
     };
 
     axios
-      .post("/api/addcity", userdata)
+      .post("/api/city/addcity", userdata)
       .then((res) => {
         handleClear();
         navigate("/head/city");

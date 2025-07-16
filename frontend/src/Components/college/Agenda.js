@@ -13,7 +13,7 @@ const Agenda = () => {
 
   useEffect(() => {
     api
-      .get("/api/get_agenda")
+      .get("/api/agenda/get_agenda")
       .then((res) => {
         const data = res.data.data;
         const activeAgenda = data.filter((a) => a.agenda_status === "active");

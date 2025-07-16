@@ -28,7 +28,7 @@ const Calender = () => {
   useEffect(() => {
     const fetchSlots = async () => {
       try {
-        const response = await api.get("/api/getvisit");
+        const response = await api.get("/api/visit/getvisit");
         const data = response.data.userData;
 
         const bookings = data.reduce((acc, visit) => {
@@ -107,11 +107,11 @@ const Calender = () => {
       </div>
 
       <div className="calendar-right">
-        <Calendar 
+        <Calendar
           locale="en-US"
           value={selectedDate}
-          onClickDay={handleDateClick} 
-          tileClassName={tileClassName} 
+          onClickDay={handleDateClick}
+          tileClassName={tileClassName}
         />
       </div>
 

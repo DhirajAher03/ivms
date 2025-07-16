@@ -8,13 +8,14 @@ import { Table, Button, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
+import api from "../../api"; // Adjust the import based on your project structure
 
 const GetUniversity = () => {
   const [universityData, setUniversityData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("/api/getuniversity")
+    api
+      .get("/api/university/getuniversity")
       .then((res) => {
         setUniversityData(res.data.data);
       })
@@ -26,8 +27,8 @@ const GetUniversity = () => {
   const deletedata = (id) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this university?");
     if (confirmDelete) {
-      axios
-        .delete(`/api/deleteuniversity/${id}`)
+      api
+        .delete(`/api/university/deleteuniversity/${id}`)
         .then((res) => {
           alert("University Deleted Successfully");
           // Optionally, refresh the data here by fetching again

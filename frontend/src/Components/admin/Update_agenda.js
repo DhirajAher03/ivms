@@ -25,7 +25,7 @@ const Update_agenda = () => {
     }
 
     api
-      .put(`/api/update_agenda/${id}`, userdata)
+      .put(`/api/agenda/update_agenda/${id}`, userdata)
       .then((res) => {
         alert("agenda Details Updated Successfully");
         navigate("/head/getagenda")
@@ -38,7 +38,7 @@ const Update_agenda = () => {
 
   useEffect(() => {
     api
-      .get(`/api/get_agenda_one/${id}`)
+      .get(`/api/agenda/get_agenda_one/${id}`)
       .then((res) => {
         console.log("API Response:", res.data);
         // setagendaData(res.data);

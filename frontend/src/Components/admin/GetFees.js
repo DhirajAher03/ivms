@@ -8,13 +8,14 @@ import { Table, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
+import api from "../../api"; // Adjust the import based on your project structure
 
 const GetFees = () => {
   const [feesData, setFeesData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("/api/get_fees")
+    api
+      .get("/api/fees/get_fees")
       .then((res) => {
         setFeesData(res.data.data);
       })
@@ -26,8 +27,8 @@ const GetFees = () => {
   const deletedata = (id) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this fees?");
     if (confirmDelete) {
-      axios
-        .delete(`/api/delete_fees/${id}`)
+      api
+        .delete(`/api/fees/delete_fees/${id}`)
         .then((res) => {
           alert("Fees Deleted Successfully");
           // Optionally, refresh the data here by fetching again

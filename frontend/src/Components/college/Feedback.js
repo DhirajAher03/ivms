@@ -16,7 +16,7 @@ const Feedback = () => {
 
   useEffect(() => {
     api
-      .get("/api/getvisit")
+      .get("/api/visit/getvisit")
       .then((res) => {
         const data = res.data.userData;
         setVisitData(data);
@@ -54,7 +54,7 @@ const Feedback = () => {
     };
 
     api
-      .post("/api/addfeedback", userdata)
+      .post("/api/feedback/addfeedback", userdata)
       .then((res) => {
         alert("Feedback submitted successfully!");
         handleClear();

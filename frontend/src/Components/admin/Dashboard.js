@@ -96,7 +96,7 @@ const Dashboard = () => {
   const [cancelledVisitCount, setCancelledVisitCount] = useState(0);
 
   useEffect(() => {
-    api.get("/api/get_registration")
+    api.get("/api/registration/get_registration")
       .then((res) => {
         const data = res.data.data;
         setCollegeData(data);
@@ -114,7 +114,7 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    api.get("/api/getvisit")
+    api.get("/api/visit/getvisit")
       .then((res) => {
         const data = res.data.userData;
         setVisitData(data);

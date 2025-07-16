@@ -17,7 +17,7 @@ const University = () => {
       university_status,
     }
 
-    api.post("/api/adduniversity", userdata)
+    api.post("/api/university/adduniversity", userdata)
       .then((res) => {
         navigate("/head/university")
         console.log(res.data.data);

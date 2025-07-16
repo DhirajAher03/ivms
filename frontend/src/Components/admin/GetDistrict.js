@@ -8,13 +8,14 @@ import { Table, Button, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
+import api from "../../api"; // Adjust the import based on your project structure
 
 const GetDistrict = () => {
   const [districtData, setDistrictData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("/api/getdistrict")
+    api
+      .get("/api/district/getdistrict")
       .then((res) => {
         setDistrictData(res.data.data);
       })
@@ -27,8 +28,8 @@ const GetDistrict = () => {
   const deletedata = (id) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this district?");
     if (confirmDelete) {
-      axios
-        .delete(`/api/deletedistrict/${id}`)
+      api
+        .delete(`/api/district/deletedistrict/${id}`)
         .then((res) => {
           alert("District Deleted Successfully");
           // Optionally, refresh the data here by fetching again

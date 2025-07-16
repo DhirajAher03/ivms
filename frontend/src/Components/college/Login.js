@@ -22,7 +22,7 @@ const Login = () => {
     setServerError("");
 
     api.post(
-      "/api/loginauth",
+      "/api/registration/loginauth",
       { reg_college_username, reg_password },
       { headers: { "Content-Type": "application/json" } }
     )
@@ -41,7 +41,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    api.get("/api/getvisit")
+    api.get("/api/visit/getvisit")
       .then((res) => {
         const data = res.data.userData;
         setVisitData(data);

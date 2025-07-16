@@ -20,7 +20,7 @@ const Update_city = () => {
   // Fetch city data for updating
   useEffect(() => {
     api
-      .get(`/api/getonecity/${id}`)
+      .get(`/api/city/getonecity/${id}`)
       .then((response) => {
         setCitydata(response.data);
         setCityState(response.data.city_state);
@@ -34,7 +34,7 @@ const Update_city = () => {
   //   get API for state
   useEffect(() => {
     api
-      .get("/api/getstate")
+      .get("/api/state/getstate")
       .then((res) => {
         const filtestate = res.data.data.filter((state) => state.state_status === "active")
         setStatedata(filtestate);
@@ -46,7 +46,7 @@ const Update_city = () => {
   useEffect(() => {
     if (city_state) {
       api
-        .get("/api/getdistrict")
+        .get("/api/district/getdistrict")
         .then((res) => {
           const filteredDistricts = res.data.data.filter(
             (district) => district.district_state === city_state && district.district_status == "active"
@@ -76,7 +76,7 @@ const Update_city = () => {
     };
 
     api
-      .put(`/api/updatecity/${id}`, userdata)
+      .put(`/api/city/updatecity/${id}`, userdata)
       .then(() => {
         console.log("City updated successfully");
         navigate("/head/city");

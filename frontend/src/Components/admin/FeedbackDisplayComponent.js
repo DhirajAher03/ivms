@@ -13,7 +13,7 @@ const FeedbackDisplayComponent = () => {
 
   useEffect(() => {
     api
-      .get("/api/getfeedback")
+      .get("/api/feedback/getfeedback")
       .then((res) => {
         setFeeddbackdata(res.data.data);
       })

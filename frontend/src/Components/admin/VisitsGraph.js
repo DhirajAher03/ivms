@@ -36,7 +36,7 @@ const VisitsGraph = () => {
   });
 
   useEffect(() => {
-    api.get("/api/getvisit")
+    api.get("/api/visit/getvisit")
       .then((response) => {
         const visitsArray = response.data.userData || [];
         const lastFiveVisits = visitsArray.slice(-5);

@@ -23,7 +23,7 @@ const Update_location = () => {
     }
 
     api
-      .put(`/api/updatelocation/${id}`, userdata)
+      .put(`/api/location/updatelocation/${id}`, userdata)
       .then((res) => {
         alert("Location Details Updated Successfully");
         navigate("/head/location");
@@ -36,7 +36,7 @@ const Update_location = () => {
 
   useEffect(() => {
     api
-      .get(`/api/getonelocation/${id}`)
+      .get(`/api/location/getonelocation/${id}`)
       .then((res) => {
         setLocationData(res.data);
         setLocationcity(res.data.location_city); // Set the initial value for university_name

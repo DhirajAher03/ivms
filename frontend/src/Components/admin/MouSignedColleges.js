@@ -13,7 +13,7 @@ const MouSigned = () => {
   const visitsPerPage = 10; // Number of rows per page
   useEffect(() => {
     axios
-      .get("/api/get_registration")
+      .get("/api/registration/get_registration")
       .then((res) => {
         const filterdmoudata = res.data.data.filter(
           (visit) => visit.reg_mou_sign === "Yes"

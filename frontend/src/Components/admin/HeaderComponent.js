@@ -20,7 +20,7 @@ const HeaderComponent = () => {
     }
 
     axios
-      .get("/api/getvisit")
+      .get("/api/visit/getvisit")
       .then((res) => {
         const data = res.data.userData;
         setVisitData(data);

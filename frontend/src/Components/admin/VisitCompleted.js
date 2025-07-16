@@ -25,7 +25,7 @@ const VisitCompleted = () => {
   // Fetch visit data
   useEffect(() => {
     api
-      .get("/api/getvisit")
+      .get("/api/visit/getvisit")
       .then((res) => {
         const data = res.data.userData;
         setVisitData(data);
@@ -74,7 +74,7 @@ const VisitCompleted = () => {
     const userdata = { college_name, Date_of_visit, Visit_status };
 
     api
-      .put(`/api/updatevisit/${id}`, userdata)
+      .put(`/api/visit/updatevisit/${id}`, userdata)
       .then(() => {
         alert("Visit status updated successfully.");
         handleClear();

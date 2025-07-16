@@ -31,7 +31,7 @@ const ColLogin = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    api.get("/api/getlocation").then((res) => {
+    api.get("/api/location/getlocation").then((res) => {
       const data = res.data.data;
       const stateData = data.filter(
         (state) => state.location_status === "active"
@@ -41,7 +41,7 @@ const ColLogin = () => {
   }, []);
 
   useEffect(() => {
-    api.get("/api/getvisit").then((res) => {
+    api.get("/api/visit/getvisit").then((res) => {
       setVisitData(res.data.userData);
     });
   }, []);
@@ -100,7 +100,7 @@ const ColLogin = () => {
     formData.append("mousigned", mousigned);
 
     api
-      .post("/api/addvisit", formData, {
+      .post("/api/visit/addvisit", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

@@ -23,7 +23,7 @@ const FeesVerification = () => {
 
   useEffect(() => {
     api
-      .get("/api/getvisit")
+      .get("/api/visit/getvisit")
       .then((response) => {
         const filteredData =
           response.data?.userData?.filter(
@@ -45,7 +45,7 @@ const FeesVerification = () => {
     const userdata = { fees_received: feesReceived };
 
     axios
-      .put(`/api/updatevisit/${id}`, userdata)
+      .put(`/api/visit/updatevisit/${id}`, userdata)
       .then(() => {
         alert("Fee status updated successfully!");
         navigate("/head/ivrequest");

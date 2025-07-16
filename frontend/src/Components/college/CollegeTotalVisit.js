@@ -18,7 +18,7 @@ const CollegeTotalVisit = () => {
   const visitsPerPage = 10;
 
   useEffect(() => {
-    api.get("/api/getvisit").then((res) => {
+    api.get("/api/visit/getvisit").then((res) => {
       const data = res.data.userData;
       const totalIV = data.filter(
         (TIV) =>
