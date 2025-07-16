@@ -23,8 +23,8 @@ const moudfeeroute = require("./Moufee/moufee_route");
 
 // CORS
 app.use(cors({
-  origin: "http://localhost:3000",  // ✅ frontend origin
-  credentials: true                 // ✅ if sending cookies/token headers
+  origin: ["http://localhost:3000", "https://ivms-plum.vercel.app"], // ✅ allow both
+  credentials: true
 }));
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
